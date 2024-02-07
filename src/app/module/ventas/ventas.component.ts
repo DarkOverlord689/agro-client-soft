@@ -37,13 +37,13 @@ export class VentasComponent {
     this.codigoTagActive = 'DAS_VEN';
     this.tag = [
       {
-        id: 2,
+        id: 1,
         codigo: 'DAS_VEN',
         nombreTag: 'Dashboard de ventas',
         iconTag: '../../../../assets/icons/tags/suspensivo.svg',
       },
       {
-        id: 1,
+        id: 2,
         codigo: 'GES_VEN',
         nombreTag: 'Gestión de ventas',
         iconTag: '../../../../assets/icons/tags/suspensivo.svg',

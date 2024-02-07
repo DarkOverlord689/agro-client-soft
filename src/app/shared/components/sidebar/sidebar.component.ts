@@ -43,6 +43,13 @@ export class SidebarComponent {
       },
       {
         id: 6,
+        nombre: 'Movimientos',
+        active: true,
+        icon: '../../../../assets/icons/sidebar/movimientos.svg',
+        url: '/main/movimientos'
+      },
+      {
+        id: 7,
         nombre: 'Clientes',
         active: true,
         icon: '../../../../assets/icons/sidebar/usuarios.svg',

@@ -1,0 +1,34 @@
+<section class="contenedor">
+    <!-- <section class="contenedor__izq">
+        <picture>
+            <img src="" alt="">
+        </picture>
+        <div class="izq__filtro"></div>
+        <div class="izq__filtro"></div>
+        <div class="izq__filtro"></div>
+    </section> -->
+    <section class="contenedor__der">
+        <header>
+            <div class="cards-estadisticas" *ngFor="let item of [1,2,3,4]">
+                <h2>
+                    12
+                </h2>
+                <div class="info">
+                    <span nz-icon nzType="caret-up" nzTheme="outline"></span>
+                    <span class="title-dashboard">Tarea Finalizadas</span>
+                </div>
+            </div>
+        </header>
+        <div class="der__graf">
+            <div class="graf__punto" #chartPunto></div>
+        </div>
+        <div class="der__graf">
+            <div class="graf__bar" #chartPie></div>
+            <div class="graf__bar" #chartBar1></div>
+        </div>
+        <div class="der__graf">
+            <div class="graf__bar" #chartBar2></div>
+            <div class="graf__bar" #chartBar3></div>
+        </div>
+    </section>
+</section>

@@ -1,0 +1,125 @@
+.contenedor {
+    margin-top: 19px;
+    width: 100%;
+    min-height: 485px;
+    border-radius: 20px;
+    background-color: white;
+    padding: 22px;
+  }
+  
+  .contenedor__table {
+    max-height: 385px;
+    min-height: 300px;
+    overflow-y: scroll;
+    width: 100%;
+  }
+  
+  table {
+    width: 100%;
+  
+    thead {
+      width: 100%;
+      position: sticky;
+      top: 0;
+      background-color: white;
+  
+      tr {
+        width: 100%;
+  
+        th {
+          max-width: 200px;
+          color: var(--Color-4, #232323);
+          font-family: Poppins;
+          font-size: 14px;
+          font-style: normal;
+          font-weight: 500;
+          line-height: normal;
+          padding: 10px 0px;
+          border: 1px solid #fafafa;
+          background: #fafafa;
+        }
+      }
+    }
+  
+    tbody {
+      width: 100%;
+      tr {
+        width: 100%;
+  
+        td {
+          padding: 15px 0px;
+          min-width: 59px;
+          color: var(--Secondary-Color, #232323);
+          font-family: Poppins;
+          font-size: 12px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: normal;
+          text-align: center;
+          border: 1px solid #fafafa;
+        }
+      }
+    }
+  }
+  
+  .item-action {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+  
+    .aumentar,
+    .disminuir {
+      width: 32px;
+      height: 32px;
+      border-radius: 32px;
+      background-color: #fafafa;
+      display: grid;
+      place-items: center;
+    }
+  }
+  
+  .paginador {
+    min-height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 22px;
+    width: 100%;
+  
+    span {
+      color: var(--Secondary-Color, #232323);
+  
+      /* Status */
+      font-family: Poppins;
+      font-size: 11px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+      letter-spacing: 0.5px;
+  
+      span {
+        color: var(--Secondary-Color, #232323);
+  
+        /* Table/Footer */
+        font-family: Poppins;
+        font-size: 11px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+        letter-spacing: 0.6px;
+      }
+    }
+  }
+  
+  .no__hay-datos {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  
+    img {
+      width: 500px;
+    }
+  }
+  
