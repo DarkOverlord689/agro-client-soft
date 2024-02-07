@@ -43,20 +43,27 @@ export class SidebarComponent {
       },
       {
         id: 6,
+        nombre: 'Productos',
+        active: true,
+        icon: '../../../../assets/icons/sidebar/pedidos.svg',
+        url: '/main/productos'
+      },
+      {
+        id: 7,
         nombre: 'Movimientos',
         active: true,
         icon: '../../../../assets/icons/sidebar/movimientos.svg',
         url: '/main/movimientos'
       },
       {
-        id: 7,
+        id: 8,
         nombre: 'Clientes',
         active: true,
         icon: '../../../../assets/icons/sidebar/usuarios.svg',
         url: '/main/clientes'
       },
       {
-        id: 8,
+        id: 9,
         nombre: 'Configuración',
         active: true,
         icon: '../../../../assets/icons/sidebar/configuracion.svg',

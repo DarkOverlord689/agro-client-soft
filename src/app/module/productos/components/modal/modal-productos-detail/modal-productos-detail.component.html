@@ -1,0 +1,40 @@
+<section class="contenedor__modal">
+    <button class="close" (click)="emitirAbrirModalAgregar()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path
+                d="M12.6666 4.2735L11.7266 3.3335L7.99992 7.06016L4.27325 3.3335L3.33325 4.2735L7.05992 8.00016L3.33325 11.7268L4.27325 12.6668L7.99992 8.94016L11.7266 12.6668L12.6666 11.7268L8.93992 8.00016L12.6666 4.2735Z"
+                fill="#356a21" />
+        </svg>
+    </button>
+
+    <h2 class="title">
+        {{ tagActivo == 1 ? 'Detalle del producto' : tagActivo == 2 ? 'Compras del producto' : tagActivo == 3 ? 'Ventas del producto' : 'Historial del producto' }}
+    </h2>
+
+    <nav>
+        <ul>
+            <li *ngFor="let item of tag" (click)="tagSeleccionadoMet(item); selectActive = false"
+                [ngClass]="tagActivo == item.id ? 'tag-active' : ''">
+                <picture>
+                    <img [src]="item.iconTag" alt="">
+                </picture>
+                <button type="button">{{ item.nombreTag }}</button>
+            </li>
+        </ul>
+    </nav>
+
+    <ng-container [ngSwitch]="tagActivo">
+        <div *ngSwitchCase="1">
+            Lorem.
+        </div>
+        <div *ngSwitchCase="2">
+            Lorem, ipsum.
+        </div>
+        <div *ngSwitchCase="3">
+            Lorem, ipsum dolor.
+        </div>
+        <div *ngSwitchCase="4">
+            Lorem ipsum dolor sit.
+        </div>
+    </ng-container>
+</section>

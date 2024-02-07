@@ -7,6 +7,7 @@ import { ProveedoresComponent } from '../proveedores/proveedores.component';
 import { UsuariosComponent } from '../usuarios/usuarios.component';
 import { ConfiguracionComponent } from '../configuracion/configuracion.component';
 import { MovimientosComponent } from '../movimientos/movimientos.component';
+import { ProductosComponent } from '../productos/productos.component';
 
 const routes: Routes = [
   {
@@ -45,6 +46,17 @@ const routes: Routes = [
       ),
     data: {
       title: 'Proveedores',
+    },
+  },
+  {
+    path: 'productos',
+    component: ProductosComponent,
+    loadChildren: () =>
+      import('../productos/productos.module').then(
+        (m) => m.ProductosModule
+      ),
+    data: {
+      title: 'Productos',
     },
   },
   {
