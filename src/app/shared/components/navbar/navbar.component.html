@@ -1,0 +1,44 @@
+<nav class="contenedor">
+    <h2 class="contenedor__title">
+        {{ title || ''}}
+    </h2>
+
+    <div class="contenedor__opciones">
+        <div class="opciones__input">
+            <picture>
+                <img src="../../../../assets/icons/busqueda.svg" alt="">
+            </picture>
+            <input type="text" placeholder="Buscar aqui...">
+        </div>
+        <div class="opciones__user">
+            <div class="user__notificacion">
+                <picture>
+                    <img src="../../../../assets/icons/navbar/notificacion.svg" alt="">
+                </picture>
+                <div class="notificacion"></div>
+            </div>
+
+            <picture class="user__perfil">
+                <img class="perfil" [src]="foto" [alt]="foto">
+                <div class="perfil__datos">
+                    <div class="datos">
+                        <h3>{{ (nombre) || ''}}</h3>
+                        <span>{{ ((perfil) || 'Cliente') }}</span>
+                    </div>
+
+                    <img style="cursor: pointer;" src="../../../../assets/icons/navbar/flecha.svg" alt="" nz-dropdown
+                        nzTrigger="click" [nzDropdownMenu]="menu">
+                    <nz-dropdown-menu #menu="nzDropdownMenu">
+                        <ul nz-menu>
+                            <li nz-menu-divider></li>
+                            <li nz-menu-item (click)="logout()">
+                                <img src="../../../../assets/icons/navbar/cerrar_sesion.svg" alt="">
+                                Cerrar sesión
+                            </li>
+                        </ul>
+                    </nz-dropdown-menu>
+                </div>
+            </picture>
+        </div>
+    </div>
+</nav>

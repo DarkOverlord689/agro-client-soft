@@ -1,0 +1,11 @@
+<nav>
+    <ul>
+        <li *ngFor="let item of tag" (click)="tagSeleccionadoMet(item); selectActive = false"
+            [ngClass]="tagActivo == item.id ? 'tag-active' : ''">
+            <picture>
+                <img [src]="item.iconTag" alt="">
+            </picture>
+            <button type="button">{{ item.nombreTag }}</button>
+        </li>
+    </ul>
+</nav>

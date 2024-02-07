@@ -1,0 +1,59 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
+/* You can add global styles to this file, and also import other style files */
+:root {
+  --primary-color: #191919;
+  --primary: #29481f;
+  --white: #ffffff;
+  --sidebar-primary-hover: #448a26;
+  --sidebar-background: #356a21;
+  --background: #f3f5f6;
+  --text-link: #ffffff;
+  --expand-button: #191919;
+  --logout: #fa7575;
+  --search-background: #448a26;
+
+  --primary-2: #4978F0;
+  --primary-light: #E1EEF5;
+  --secondary: #1D1D1D;
+  --background-2: #F4F1FF;
+  --text: #1F2346;
+}
+
+@font-face {
+  font-family: "Sansation";
+  src: url("./assets/fonts/Sansation_Regular.ttf");
+}
+
+body {
+  font-size: 16px;
+  background: var(--background);
+  font-family: "Sansation";
+}
+
+html {
+  height: 100%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* scroll */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 7.50px;
+  display: block;
+  background-color: #ffffff;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 5px;
+  background-color: #ffffff;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 100rem;
+  background-color: #c1c1c1;
+}

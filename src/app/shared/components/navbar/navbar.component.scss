@@ -1,0 +1,127 @@
+nav {
+  width: 100%;
+  height: 90px;
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 1);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+
+  h2 {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 34px;
+    letter-spacing: 0px;
+    text-align: left;
+    margin: 0;
+  }
+}
+
+.contenedor__opciones {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.opciones__input {
+  height: 50px;
+  width: 345px;
+  position: relative;
+
+  picture {
+    img {
+      position: absolute;
+      top: 12px;
+      left: 10px;
+    }
+  }
+  input {
+    width: 100%;
+    height: 100%;
+    padding-left: 45px;
+    border-radius: 16px;
+    outline: none;
+    border: none;
+    background: rgba(249, 250, 251, 1);
+
+    color: #bdbdbd;
+
+    /* Text/Text Regular 1 */
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+}
+
+.opciones__user {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.user__notificacion {
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  background-color: #c3e9ad;
+  display: grid;
+  place-items: center;
+  position: relative;
+  cursor: pointer;
+
+  div.notificacion {
+    background-color: #29481f;
+    width: 6.667px;
+    height: 6.667px;
+    flex-shrink: 0;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    border-radius: 8px;
+  }
+}
+
+.user__perfil {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  img.perfil {
+    width: 60px;
+    height: 60px;
+    border-radius: 32px;
+  }
+}
+
+.perfil__datos {
+  display: flex;
+  align-items: start;
+  gap: 12px;
+
+  .datos {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    h3 {
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 24px;
+      letter-spacing: 0px;
+      text-align: left;
+      padding: 0px;
+      margin: 0px;
+    }
+
+    span {
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 20px;
+      letter-spacing: 0px;
+      text-align: left;
+      color: rgba(115, 119, 145, 1);
+    }
+  }
+}
