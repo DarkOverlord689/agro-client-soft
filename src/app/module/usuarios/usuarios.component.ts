@@ -8,45 +8,38 @@ import { ITag } from 'src/app/shared/models/tag.interface';
       [tag]="tag"
       (emitTag)="recibirEmit($event)"
     ></app-sub-navbar>
+
+    <section>
+      <ng-container [ngSwitch]="codigoTagActive">
+        <div *ngSwitchCase="'GES_USU'">
+          <app-gestion-usuarios></app-gestion-usuarios>
+        </div>
+        <div *ngSwitchCase="'CRE_USU'">
+          <app-creacion-usuarios></app-creacion-usuarios>
+        </div>
+        <div *ngSwitchDefault></div>
+      </ng-container>
+    </section>
   `,
-  styles: [
-  ]
+  styles: [],
 })
 export class UsuariosComponent {
   tag: ITag[];
   codigoTagActive: string;
 
   constructor() {
-    this.codigoTagActive = 'CRE_TAR';
+    this.codigoTagActive = 'GES_USU';
     this.tag = [
       {
         id: 1,
-        codigo: 'CRE_TAR',
-        nombreTag: 'Gestión de tareas',
+        codigo: 'GES_USU',
+        nombreTag: 'Gestión de usuarios',
         iconTag: '../../../../assets/icons/tags/suspensivo.svg',
       },
       {
         id: 2,
-        codigo: 'TAB_TAR',
-        nombreTag: 'Panel de tareas',
-        iconTag: '../../../../assets/icons/tags/suspensivo.svg',
-      },
-      {
-        id: 3,
-        codigo: 'VIS_TAR',
-        nombreTag: 'Tablero de tareas',
-        iconTag: '../../../../assets/icons/tags/suspensivo.svg',
-      },
-      {
-        id: 4,
-        codigo: 'CAL_TAR',
-        nombreTag: 'Calendario de tareas',
-        iconTag: '../../../../assets/icons/tags/suspensivo.svg',
-      },
-      {
-        id: 5,
-        codigo: 'EVI_PRO',
-        nombreTag: 'Evidencia proyectos',
+        codigo: 'CRE_USU',
+        nombreTag: 'Creación de usuarios',
         iconTag: '../../../../assets/icons/tags/suspensivo.svg',
       },
     ];

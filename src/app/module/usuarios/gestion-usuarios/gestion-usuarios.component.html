@@ -1,0 +1,49 @@
+<section class="contenedor">
+    <ng-container *ngIf="listInventario.length > 0; then dataMain; else noDataMain"></ng-container>
+    <ng-template #dataMain>
+        <div class="contenedor__table" [ngStyle]="{'min-height': listInventario.length > 0 ? '100px' : '300px'}">
+            <table>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Número de documento</th>
+                        <th>Nombre completo</th>
+                        <th>Correo</th>
+                        <th>Telefono</th>
+                        <th>Dirección</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <label nz-checkbox></label>
+                        </td>
+                        <td>1001892059</td>
+                        <td>Luis valencia</td>
+                        <td>luisvalenciadev@outlook.com</td>
+                        <td>3106560877</td>
+                        <td>Cra 6 sur # 51 - 21</td>
+                        <td class="item-action">
+                            <nz-switch nzSize="small"></nz-switch>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="paginador">
+            <span>Usuarios activos: <span>{{ pageSize > listInventario.length ? listInventario.length :
+                    pageSize}}</span>/{{listInventario.length}}</span>
+            <mat-paginator [length]="listInventario.length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions">
+                <!-- (page)="getListUser()" -->
+            </mat-paginator>
+        </div>
+    </ng-template>
+
+    <ng-template #noDataMain>
+        <div class="no__hay-datos">
+            <img src="../../../../assets/icons/table/vacio.svg" alt="">
+        </div>
+    </ng-template>
+</section>

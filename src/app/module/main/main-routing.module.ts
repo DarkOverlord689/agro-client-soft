@@ -2,9 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from '../dashboard/dashboard/dashboard.component';
 import { VentasComponent } from '../ventas/ventas.component';
-import { PedidosComponent } from '../pedidos/pedidos.component';
 import { InventarioComponent } from '../inventario/inventario.component';
-import { ProveedoresComponent } from '../proveedores/facturacion.component';
+import { ProveedoresComponent } from '../proveedores/proveedores.component';
 import { UsuariosComponent } from '../usuarios/usuarios.component';
 import { ConfiguracionComponent } from '../configuracion/configuracion.component';
 
@@ -26,14 +25,6 @@ const routes: Routes = [
     }
   },
   {
-    path: 'pedidos',
-    component: PedidosComponent,
-    loadChildren: () => import('../pedidos/pedidos.module').then(m => m.PedidosModule),
-    data: {
-      title: 'Pedidos',
-    }
-  },
-  {
     path: 'inventario',
     component: InventarioComponent,
     loadChildren: () => import('../inventario/inventario.module').then(m => m.InventarioModule),
@@ -44,7 +35,7 @@ const routes: Routes = [
   {
     path: 'proveedores',
     component: ProveedoresComponent,
-    loadChildren: () => import('../proveedores/facturacion.module').then(m => m.ProveedoresModule),
+    loadChildren: () => import('../proveedores/proveedores.module').then(m => m.ProveedoresModule),
     data: {
       title: 'Proveedores',
     }

@@ -28,13 +28,6 @@ export class SidebarComponent {
         url: '/main/ventas'
       },
       {
-        id: 3,
-        nombre: 'Pedidos',
-        active: true,
-        icon: '../../../../assets/icons/sidebar/pedidos.svg',
-        url: '/main/pedidos'
-      },
-      {
         id: 4,
         nombre: 'Inventario',
         active: true,

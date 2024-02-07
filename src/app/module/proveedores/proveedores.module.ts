@@ -1,19 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { PedidosRoutingModule } from './pedidos-routing.module';
-import { PedidosComponent } from './pedidos.component';
+import { ProveedoresRoutingModule } from './proveedores-routing.module';
+import { ProveedoresComponent } from './proveedores.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
   declarations: [
-    PedidosComponent
+    ProveedoresComponent
   ],
   imports: [
     CommonModule,
-    PedidosRoutingModule,
+    ProveedoresRoutingModule,
     SharedModule
   ]
 })
-export class PedidosModule { }
+export class ProveedoresModule { }
