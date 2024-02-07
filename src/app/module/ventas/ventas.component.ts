@@ -11,11 +11,11 @@ import { ITag } from 'src/app/shared/models/tag.interface';
 
     <section>
       <ng-container [ngSwitch]="codigoTagActive">
-        <div *ngSwitchCase="'GES_VEN'">
-          <app-gestion-ventas></app-gestion-ventas>
-        </div>
         <div *ngSwitchCase="'DAS_VEN'">
           <app-dashboard-ventas></app-dashboard-ventas>
+        </div>
+        <div *ngSwitchCase="'GES_VEN'">
+          <app-gestion-ventas></app-gestion-ventas>
         </div>
         <div *ngSwitchCase="'DET_VEN'">
           <app-resumen-ventas></app-resumen-ventas>
@@ -34,18 +34,18 @@ export class VentasComponent {
   codigoTagActive: string;
 
   constructor() {
-    this.codigoTagActive = 'GES_VEN';
+    this.codigoTagActive = 'DAS_VEN';
     this.tag = [
-      {
-        id: 1,
-        codigo: 'GES_VEN',
-        nombreTag: 'Gestión de ventas',
-        iconTag: '../../../../assets/icons/tags/suspensivo.svg',
-      },
       {
         id: 2,
         codigo: 'DAS_VEN',
         nombreTag: 'Dashboard de ventas',
+        iconTag: '../../../../assets/icons/tags/suspensivo.svg',
+      },
+      {
+        id: 1,
+        codigo: 'GES_VEN',
+        nombreTag: 'Gestión de ventas',
         iconTag: '../../../../assets/icons/tags/suspensivo.svg',
       },
       {

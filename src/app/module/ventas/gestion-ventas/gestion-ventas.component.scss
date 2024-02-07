@@ -20,12 +20,12 @@ h2.sub-title {
 .contenedor__card {
   margin-top: 19px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(275px, 275px));
-  gap: 32px;
+  grid-template-columns: repeat(auto-fit, minmax(265px, 265px));
+  gap: 22px;
 }
 
 .card {
-  width: 275px;
+  width: 265px;
   min-height: 320px;
   padding: 0.8em;
   background: white;
