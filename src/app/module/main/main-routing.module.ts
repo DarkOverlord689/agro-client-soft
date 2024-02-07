@@ -4,9 +4,8 @@ import { DashboardComponent } from '../dashboard/dashboard/dashboard.component';
 import { VentasComponent } from '../ventas/ventas.component';
 import { PedidosComponent } from '../pedidos/pedidos.component';
 import { InventarioComponent } from '../inventario/inventario.component';
-import { FacturacionComponent } from '../facturacion/facturacion.component';
-import { ProduccionComponent } from '../produccion/produccion.component';
-import { NotificacionComponent } from '../notificacion/notificacion.component';
+import { ProveedoresComponent } from '../proveedores/facturacion.component';
+import { UsuariosComponent } from '../usuarios/usuarios.component';
 import { ConfiguracionComponent } from '../configuracion/configuracion.component';
 
 const routes: Routes = [
@@ -43,27 +42,19 @@ const routes: Routes = [
     }
   },
   {
-    path: 'facturacion',
-    component: FacturacionComponent,
-    loadChildren: () => import('../facturacion/facturacion.module').then(m => m.FacturacionModule),
+    path: 'proveedores',
+    component: ProveedoresComponent,
+    loadChildren: () => import('../proveedores/facturacion.module').then(m => m.ProveedoresModule),
     data: {
-      title: 'Facturación',
+      title: 'Proveedores',
     }
   },
   {
-    path: 'produccion',
-    component: ProduccionComponent,
-    loadChildren: () => import('../produccion/produccion.module').then(m => m.ProduccionModule),
+    path: 'usuarios',
+    component: UsuariosComponent,
+    loadChildren: () => import('../usuarios/usuarios.module').then(m => m.UsuariosModule),
     data: {
-      title: 'Producción',
-    }
-  },
-  {
-    path: 'notificacion',
-    component: NotificacionComponent,
-    loadChildren: () => import('../notificacion/notificacion.module').then(m => m.NotificacionModule),
-    data: {
-      title: 'Notificación',
+      title: 'Usuarios',
     }
   },
   {

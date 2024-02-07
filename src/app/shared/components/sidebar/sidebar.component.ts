@@ -43,24 +43,17 @@ export class SidebarComponent {
       },
       {
         id: 5,
-        nombre: 'Facturación',
+        nombre: 'Proveedores',
         active: true,
-        icon: '../../../../assets/icons/sidebar/facturacion.svg',
-        url: '/main/facturacion'
+        icon: '../../../../assets/icons/sidebar/usuarios.svg',
+        url: '/main/proveedores'
       },
       {
         id: 6,
-        nombre: 'Producción',
+        nombre: 'Usuarios',
         active: true,
-        icon: '../../../../assets/icons/sidebar/produccion.svg',
-        url: '/main/produccion'
-      },
-      {
-        id: 7,
-        nombre: 'Notificación',
-        active: true,
-        icon: '../../../../assets/icons/sidebar/notificacion.svg',
-        url: '/main/notificacion'
+        icon: '../../../../assets/icons/sidebar/usuarios.svg',
+        url: '/main/usuarios'
       },
       {
         id: 8,

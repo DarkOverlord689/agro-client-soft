@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { ITag } from 'src/app/shared/models/tag.interface';
 
 @Component({
-  selector: 'app-notificacion',
+  selector: 'app-facturacion',
   template: `
     <app-sub-navbar
       [tag]="tag"
@@ -12,7 +12,7 @@ import { ITag } from 'src/app/shared/models/tag.interface';
   styles: [
   ]
 })
-export class NotificacionComponent {
+export class ProveedoresComponent {
   tag: ITag[];
   codigoTagActive: string;
 
