@@ -34,7 +34,7 @@ export class VentasComponent {
   codigoTagActive: string;
 
   constructor() {
-    this.codigoTagActive = 'ACT_VEN';
+    this.codigoTagActive = 'GES_VEN';
     this.tag = [
       {
         id: 1,
