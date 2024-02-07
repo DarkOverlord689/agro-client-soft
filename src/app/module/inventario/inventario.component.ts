@@ -8,45 +8,46 @@ import { ITag } from 'src/app/shared/models/tag.interface';
       [tag]="tag"
       (emitTag)="recibirEmit($event)"
     ></app-sub-navbar>
+    <section>
+      <ng-container [ngSwitch]="codigoTagActive">
+        <div *ngSwitchCase="'DAS_INV'">
+          <app-dashboard-inventario></app-dashboard-inventario>
+        </div>
+        <div *ngSwitchCase="'GES_INV'">
+          <app-gestion-inventario></app-gestion-inventario>
+        </div>
+        <div *ngSwitchCase="'AGR_INV'">
+        <app-agregar-inventario></app-agregar-inventario>
+        </div>
+        <div *ngSwitchDefault></div>
+      </ng-container>
+    </section>
   `,
-  styles: [
-  ]
+  styles: [],
 })
 export class InventarioComponent {
   tag: ITag[];
   codigoTagActive: string;
 
   constructor() {
-    this.codigoTagActive = 'CRE_TAR';
+    this.codigoTagActive = 'DAS_INV';
     this.tag = [
       {
         id: 1,
-        codigo: 'CRE_TAR',
-        nombreTag: 'Gestión de tareas',
+        codigo: 'DAS_INV',
+        nombreTag: 'Dashboard de inventario',
         iconTag: '../../../../assets/icons/tags/suspensivo.svg',
       },
       {
         id: 2,
-        codigo: 'TAB_TAR',
-        nombreTag: 'Panel de tareas',
+        codigo: 'GES_INV',
+        nombreTag: 'Gestión de inventario',
         iconTag: '../../../../assets/icons/tags/suspensivo.svg',
       },
       {
         id: 3,
-        codigo: 'VIS_TAR',
-        nombreTag: 'Tablero de tareas',
-        iconTag: '../../../../assets/icons/tags/suspensivo.svg',
-      },
-      {
-        id: 4,
-        codigo: 'CAL_TAR',
-        nombreTag: 'Calendario de tareas',
-        iconTag: '../../../../assets/icons/tags/suspensivo.svg',
-      },
-      {
-        id: 5,
-        codigo: 'EVI_PRO',
-        nombreTag: 'Evidencia proyectos',
+        codigo: 'AGR_INV',
+        nombreTag: 'Agregar inventario',
         iconTag: '../../../../assets/icons/tags/suspensivo.svg',
       },
     ];

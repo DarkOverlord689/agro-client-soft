@@ -4,9 +4,9 @@ import { RouterModule } from '@angular/router';
 
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { SubNavbarComponent } from './components/sub-navbar/sub-navbar.component';
 
 import { ImportacionesGlobalModule } from '../importaciones-global.module';
-import { SubNavbarComponent } from './components/sub-navbar/sub-navbar.component';
 
 const COMPONENTES = [SidebarComponent, NavbarComponent, SubNavbarComponent]
 
@@ -17,7 +17,7 @@ const MODULOS = [
 ];
 @NgModule({
   declarations: [...COMPONENTES],
-  imports: [CommonModule, RouterModule, ImportacionesGlobalModule],
+  imports: [...MODULOS],
   exports: [...COMPONENTES, ...MODULOS]
 })
 export class SharedModule {}

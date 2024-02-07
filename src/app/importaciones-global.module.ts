@@ -30,6 +30,12 @@ import { NzPopoverModule } from 'ng-zorro-antd/popover';
 import { NzUploadModule } from 'ng-zorro-antd/upload';
 import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
 import { NzMessageModule } from 'ng-zorro-antd/message';
+import { NzQRCodeModule } from 'ng-zorro-antd/qr-code';
+
+// Material
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorIntl } from '@angular/material/paginator';
 
 const MODULOS = [
   NzInputModule,
@@ -61,15 +67,21 @@ const MODULOS = [
   NzUploadModule,
   NzPopconfirmModule,
   NzMessageModule,
-
+  NzQRCodeModule,
+  // MATERIAL
+  MatPaginatorModule,
+  MatTableModule,
 ];
 
 @NgModule({
   declarations: [],
-  imports: [
-    CommonModule,
-    ...MODULOS,
+  imports: [CommonModule, ...MODULOS],
+  exports: [...MODULOS],
+  providers: [
+    {
+      provide: MatPaginatorIntl,
+      useClass: MatPaginatorIntl,
+    },
   ],
-  exports: [...MODULOS]
 })
 export class ImportacionesGlobalModule {}

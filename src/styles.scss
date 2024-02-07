@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
+@import "../node_modules/ng-zorro-antd/ng-zorro-antd.min.css";
 /* You can add global styles to this file, and also import other style files */
 :root {
   --primary-color: #191919;
@@ -12,11 +13,11 @@
   --logout: #fa7575;
   --search-background: #448a26;
 
-  --primary-2: #4978F0;
-  --primary-light: #E1EEF5;
-  --secondary: #1D1D1D;
-  --background-2: #F4F1FF;
-  --text: #1F2346;
+  --primary-2: #4978f0;
+  --primary-light: #e1eef5;
+  --secondary: #1d1d1d;
+  --background-2: #f4f1ff;
+  --text: #1f2346;
 }
 
 @font-face {
@@ -43,7 +44,7 @@ html {
 /* scroll */
 ::-webkit-scrollbar {
   width: 6px;
-  height: 7.50px;
+  height: 7.5px;
   display: block;
   background-color: #ffffff;
 }
@@ -56,4 +57,68 @@ html {
 ::-webkit-scrollbar-thumb {
   border-radius: 100rem;
   background-color: #c1c1c1;
+}
+
+app-inventario {
+  display: flex;
+  flex-direction: column;
+}
+
+// SELECT
+.ant-select-selector {
+  border: 1px solid #d9d9d9 !important;
+  border-radius: 16px !important;
+  height: 46px !important;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 6px 0px;
+  color: var(--Color-4, #000000d9) !important;
+  font-family: Poppins;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px; /* 150% */
+  letter-spacing: -0.32px;
+  background: #fff !important;
+}
+
+// DATE-PICKER
+.ant-picker {
+  border: 1px solid #d9d9d9 !important;
+  border-radius: 16px !important;
+  height: 46px !important;
+  box-sizing: border-box;
+  margin: 0;
+  color: var(--Color-4, #000000d9) !important;
+  font-size: 14px;
+  font-variant: tabular-nums;
+  line-height: 1.5715;
+  list-style: none;
+  font-feature-settings: "tnum";
+  padding: 4px 11px;
+  background: #fff;
+  transition: border 0.3s, box-shadow 0.3s;
+  background: #fff !important;
+  min-width: 118px !important;
+  outline: none !important;
+}
+
+// TEXTAREA
+textarea {
+  border: 1px solid #d9d9d9 !important;
+  border-radius: 16px !important;
+  box-sizing: border-box;
+  margin: 0;
+  color: var(--Color-4, #000000d9) !important;
+  font-size: 14px;
+  font-variant: tabular-nums;
+  line-height: 1.5715;
+  list-style: none;
+  font-feature-settings: "tnum";
+  padding: 4px 11px;
+  background: #fff;
+  transition: border 0.3s, box-shadow 0.3s;
+  background: #fff !important;
+  outline: none !important;
 }
