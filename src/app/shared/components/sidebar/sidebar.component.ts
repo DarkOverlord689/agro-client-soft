@@ -43,10 +43,10 @@ export class SidebarComponent {
       },
       {
         id: 6,
-        nombre: 'Usuarios',
+        nombre: 'Clientes',
         active: true,
         icon: '../../../../assets/icons/sidebar/usuarios.svg',
-        url: '/main/usuarios'
+        url: '/main/clientes'
       },
       {
         id: 8,

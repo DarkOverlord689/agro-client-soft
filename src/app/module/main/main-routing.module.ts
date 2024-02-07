@@ -41,11 +41,11 @@ const routes: Routes = [
     }
   },
   {
-    path: 'usuarios',
+    path: 'clientes',
     component: UsuariosComponent,
     loadChildren: () => import('../usuarios/usuarios.module').then(m => m.UsuariosModule),
     data: {
-      title: 'Usuarios',
+      title: 'Clientes',
     }
   },
   {
