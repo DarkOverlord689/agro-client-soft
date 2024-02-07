@@ -2,51 +2,52 @@ import { Component } from '@angular/core';
 import { ITag } from 'src/app/shared/models/tag.interface';
 
 @Component({
-  selector: 'app-facturacion',
+  selector: 'app-proveedores',
   template: `
     <app-sub-navbar
       [tag]="tag"
       (emitTag)="recibirEmit($event)"
     ></app-sub-navbar>
+    <section>
+      <ng-container [ngSwitch]="codigoTagActive">
+        <div *ngSwitchCase="'DAS_PRO'">
+          <app-dashboard-proveedores></app-dashboard-proveedores>
+        </div>
+        <div *ngSwitchCase="'GES_PRO'">
+          <app-gestion-proveedores></app-gestion-proveedores>
+        </div>
+        <div *ngSwitchCase="'CRE_PRO'">
+          <app-creacion-proveedores></app-creacion-proveedores>
+        </div>
+        <div *ngSwitchDefault></div>
+      </ng-container>
+    </section>
   `,
-  styles: [
-  ]
+  styles: [],
 })
 export class ProveedoresComponent {
   tag: ITag[];
   codigoTagActive: string;
 
   constructor() {
-    this.codigoTagActive = 'CRE_TAR';
+    this.codigoTagActive = 'DAS_PRO';
     this.tag = [
       {
         id: 1,
-        codigo: 'CRE_TAR',
-        nombreTag: 'Gestión de tareas',
+        codigo: 'DAS_PRO',
+        nombreTag: 'Dashboard de proveedores',
         iconTag: '../../../../assets/icons/tags/suspensivo.svg',
       },
       {
         id: 2,
-        codigo: 'TAB_TAR',
-        nombreTag: 'Panel de tareas',
+        codigo: 'GES_PRO',
+        nombreTag: 'Gestión de proveedores',
         iconTag: '../../../../assets/icons/tags/suspensivo.svg',
       },
       {
         id: 3,
-        codigo: 'VIS_TAR',
-        nombreTag: 'Tablero de tareas',
-        iconTag: '../../../../assets/icons/tags/suspensivo.svg',
-      },
-      {
-        id: 4,
-        codigo: 'CAL_TAR',
-        nombreTag: 'Calendario de tareas',
-        iconTag: '../../../../assets/icons/tags/suspensivo.svg',
-      },
-      {
-        id: 5,
-        codigo: 'EVI_PRO',
-        nombreTag: 'Evidencia proyectos',
+        codigo: 'CRE_PRO',
+        nombreTag: 'Creación de proveedores',
         iconTag: '../../../../assets/icons/tags/suspensivo.svg',
       },
     ];

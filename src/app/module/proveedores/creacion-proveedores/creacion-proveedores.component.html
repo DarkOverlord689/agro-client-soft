@@ -1,0 +1,90 @@
+<section class="contenedor">
+    <div class="contenedor__btn-agregar">
+        <button class="btn__agregar">
+            Agregar
+            <div class="contenedor__svg">
+                <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 23 23" fill="none">
+                    <g clip-path="url(#clip0_58_750)">
+                        <path
+                            d="M11.0589 1.84314C5.97189 1.84314 1.84326 5.97177 1.84326 11.0588C1.84326 16.1459 5.97189 20.2745 11.0589 20.2745C16.146 20.2745 20.2746 16.1459 20.2746 11.0588C20.2746 5.97177 16.146 1.84314 11.0589 1.84314ZM15.6668 11.9804H11.9805V15.6667H10.1374V11.9804H6.4511V10.1373H10.1374V6.45098H11.9805V10.1373H15.6668V11.9804Z"
+                            fill="white" />
+                    </g>
+                    <defs>
+                        <clipPath id="clip0_58_750">
+                            <rect width="22.1176" height="22.1176" fill="white" />
+                        </clipPath>
+                    </defs>
+                </svg>
+            </div>
+        </button>
+    </div>
+    
+    <h2 class="title">
+        Nueva proveedor
+    </h2>
+
+    <form>
+        <h2 class="sub-title">Contacto de la empresa</h2>
+        <div class="contenedor__form-input">
+            <div class="contendor__input">
+                <label for="" class="label__title">Nombre de la empresa</label>
+                <input type="text" class="input__form">
+            </div>
+            <div class="contendor__input">
+                <label for="" class="label__title">Dirección de la empresa</label>
+                <input type="text" class="input__form">
+            </div>
+            <div class="contendor__input">
+                <label for="" class="label__title">Teléfono</label>
+                <input type="number" class="input__form">
+            </div>
+        </div>
+        <div class="contenedor__form-input">
+            <div class="contendor__input">
+                <label for="" class="label__title">Telefono 2</label>
+                <input type="number" class="input__form">
+            </div>
+            <div class="contendor__input">
+                <label for="" class="label__title">Correo electronico</label>
+                <input type="text" class="input__form">
+            </div>
+            <div class="contendor__input">
+                <label for="" class="label__title">Sitio web</label>
+                <input type="text" class="input__form">
+            </div>
+        </div>
+
+        <h2 class="sub-title">Información bancaria</h2>
+        <div class="contenedor__form-input">
+            <div class="contendor__input">
+                <label for="" class="label__title">Nombre del banco</label>
+                <input type="text" class="input__form">
+            </div>
+            <div class="contendor__input">
+                <label for="" class="label__title">Nombre del beneficiario</label>
+                <input type="text" class="input__form">
+            </div>
+            <div class="contendor__input">
+                <label for="" class="label__title">Numero de cuenta</label>
+                <input type="text" class="input__form">
+            </div>
+        </div>
+        <h2 class="sub-title">Información general</h2>
+        <div class="contenedor__form-input">
+            <div class="contendor__input">
+                <label for="" class="label__title">Fecha de creación de la empresa</label>
+                <nz-date-picker></nz-date-picker>
+            </div>
+            <div class="contendor__input">
+                <label for="" class="label__title">Categoria de la empresa</label>
+                <nz-select nzShowSearch nzAllowClear>
+                    <nz-option [nzDisabled]="true" [nzValue]="undefined" nzLabel="Seleccione un tipo"></nz-option>
+                </nz-select>
+            </div>
+            <div class="contendor__input">
+                <label for="" class="label__title">Bruto anual en ventas</label>
+                <input type="number" class="input__form">
+            </div>
+        </div>
+    </form>
+</section>
