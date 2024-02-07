@@ -16,9 +16,6 @@ import { ITag } from 'src/app/shared/models/tag.interface';
         <div *ngSwitchCase="'GES_INV'">
           <app-gestion-inventario></app-gestion-inventario>
         </div>
-        <div *ngSwitchCase="'AGR_INV'">
-        <app-agregar-inventario></app-agregar-inventario>
-        </div>
         <div *ngSwitchDefault></div>
       </ng-container>
     </section>
@@ -43,13 +40,7 @@ export class InventarioComponent {
         codigo: 'GES_INV',
         nombreTag: 'Gestión de inventario',
         iconTag: '../../../../assets/icons/tags/suspensivo.svg',
-      },
-      {
-        id: 3,
-        codigo: 'AGR_INV',
-        nombreTag: 'Agregar inventario',
-        iconTag: '../../../../assets/icons/tags/suspensivo.svg',
-      },
+      }
     ];
   }
 

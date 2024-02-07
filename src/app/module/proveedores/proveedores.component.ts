@@ -5,6 +5,7 @@ import { ITag } from 'src/app/shared/models/tag.interface';
   selector: 'app-proveedores',
   template: `
     <app-sub-navbar
+      [tagActivo]="tabActivo"
       [tag]="tag"
       (emitTag)="recibirEmit($event)"
     ></app-sub-navbar>
@@ -14,10 +15,15 @@ import { ITag } from 'src/app/shared/models/tag.interface';
           <app-dashboard-proveedores></app-dashboard-proveedores>
         </div>
         <div *ngSwitchCase="'GES_PRO'">
-          <app-gestion-proveedores></app-gestion-proveedores>
+          <app-gestion-proveedores
+            (ceacionDeInventario)="recibirEmitCreacionInventario($event)"
+          ></app-gestion-proveedores>
         </div>
         <div *ngSwitchCase="'CRE_PRO'">
           <app-creacion-proveedores></app-creacion-proveedores>
+        </div>
+        <div *ngSwitchCase="'CRE_INV'">
+          <app-agregar-inventario></app-agregar-inventario>
         </div>
         <div *ngSwitchDefault></div>
       </ng-container>
@@ -28,6 +34,8 @@ import { ITag } from 'src/app/shared/models/tag.interface';
 export class ProveedoresComponent {
   tag: ITag[];
   codigoTagActive: string;
+  tabActivo: number = 1;
+  agregarPestaña: boolean = false;
 
   constructor() {
     this.codigoTagActive = 'DAS_PRO';
@@ -50,11 +58,22 @@ export class ProveedoresComponent {
         nombreTag: 'Creación de proveedores',
         iconTag: '../../../../assets/icons/tags/suspensivo.svg',
       },
+      {
+        id: 4,
+        codigo: 'CRE_INV',
+        nombreTag: 'Creación de inventario',
+        iconTag: '../../../../assets/icons/tags/suspensivo.svg',
+      },
     ];
   }
 
   // EVENT
   recibirEmit(event: any) {
     this.codigoTagActive = event;
+  }
+
+  recibirEmitCreacionInventario(event: any) {
+    this.codigoTagActive = 'CRE_INV';
+    this.tabActivo = 4;
   }
 }

@@ -1,9 +1,4 @@
-import {
-  Component,
-  EventEmitter,
-  Input,
-  Output,
-} from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ITag } from '../../models/tag.interface';
 
 @Component({
@@ -11,13 +6,13 @@ import { ITag } from '../../models/tag.interface';
   templateUrl: './sub-navbar.component.html',
   styleUrls: ['./sub-navbar.component.scss'],
 })
-export class SubNavbarComponent  {
-  tagActivo: number = 1;
+export class SubNavbarComponent {
   @Input() tag: ITag[] = [];
+  @Input() tagActivo: number = 1;
+
   @Output() emitTag: EventEmitter<string> = new EventEmitter();
 
   selectActive: boolean = false;
-
 
   // EVENTS
   tagSeleccionadoMet(item: ITag) {

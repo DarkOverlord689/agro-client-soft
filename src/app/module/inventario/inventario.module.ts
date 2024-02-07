@@ -6,15 +6,12 @@ import { InventarioComponent } from './inventario.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { DashboardInventarioComponent } from './dashboard-inventario/dashboard-inventario.component';
 import { GestionInventarioComponent } from './gestion-inventario/gestion-inventario.component';
-import { AgregarInventarioComponent } from './agregar-inventario/agregar-inventario.component';
-
 
 @NgModule({
   declarations: [
     InventarioComponent,
     DashboardInventarioComponent,
-    GestionInventarioComponent,
-    AgregarInventarioComponent
+    GestionInventarioComponent
   ],
   imports: [
     CommonModule,
