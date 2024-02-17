@@ -11,6 +11,7 @@ import { ModalProductosListComponent } from './components/modal/modal-productos-
 import { AgregarInventarioComponent } from './agregar-inventario/agregar-inventario.component';
 import { TableProductosListComponent } from './components/table/table-productos-list/table-productos-list.component';
 import { FormProductosComponent } from './components/forms/form-productos/form-productos.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -27,6 +28,8 @@ import { FormProductosComponent } from './components/forms/form-productos/form-p
   imports: [
     CommonModule,
     ProveedoresRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
     SharedModule
   ]
 })
