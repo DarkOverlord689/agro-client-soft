@@ -6,7 +6,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class NavbarService {
   private titleSubject = new BehaviorSubject<string>(''); // Inicializado con un valor vacío
-  title$ = this.titleSubject.asObservable();;
+  title$ = this.titleSubject.asObservable();
 
   constructor() {
     // Emite el valor inicial después de un pequeño retraso

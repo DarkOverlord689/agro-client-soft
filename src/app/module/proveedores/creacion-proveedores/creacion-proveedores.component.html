@@ -27,66 +27,68 @@
         <h2 class="sub-title">Contacto de la empresa</h2>
         <div class="contenedor__form-input">
             <div class="contendor__input">
-                <label for="" class="label__title">Nombre de la empresa</label>
-                <input type="text" class="input__form" formControlName="nombre">
+                <label for="" class="label__title">Nombre de la empresa <span class="obligatorio">*</span></label>
+                <input type="text" class="input__form" formControlName="nombre" placeholder="Ingrese un nombre">
             </div>
             <!-- REVISAR ESTE CAMPO -->
             <div class="contendor__input">
-                <label for="" class="label__title">Descripciòn de la empresa</label>
-                <input type="text" class="input__form" formControlName="descripcion">
+                <label for="" class="label__title">Descripciòn de la empresa <span class="obligatorio">*</span></label>
+                <input type="text" class="input__form" formControlName="descripcion" placeholder="Ingrese una descripcion">
             </div>
             <div class="contendor__input">
-                <label for="" class="label__title">Teléfono</label>
-                <input type="number" class="input__form" formControlName="telefono">
+                <label for="" class="label__title">Teléfono <span class="obligatorio">*</span></label>
+                <input type="number" class="input__form" formControlName="telefono" placeholder="Ingrese un telefono">
             </div>
         </div>
         <div class="contenedor__form-input">
             <div class="contendor__input">
                 <label for="" class="label__title">Telefono 2</label>
-                <input type="number" class="input__form" formControlName="segundoTelefono">
+                <input type="number" class="input__form" formControlName="segundoTelefono" placeholder="Ingrese un telefono">
             </div>
             <div class="contendor__input">
-                <label for="" class="label__title">Correo electronico</label>
-                <input type="text" class="input__form" formControlName="correo">
+                <label for="" class="label__title">Correo electronico <span class="obligatorio">*</span></label>
+                <input type="text" class="input__form" formControlName="correo" placeholder="Ingrese un correo">
             </div>
             <div class="contendor__input">
-                <label for="" class="label__title">Sitio web</label>
-                <input type="text" class="input__form" formControlName="sitioWeb">
+                <label for="" class="label__title">Sitio web <span class="obligatorio">*</span></label>
+                <input type="text" class="input__form" formControlName="sitioWeb" placeholder="Ingrese un sitio web">
             </div>
         </div>
 
         <h2 class="sub-title">Información bancaria</h2>
         <div class="contenedor__form-input">
             <div class="contendor__input">
-                <label for="" class="label__title">Nombre del banco</label>
+                <label for="" class="label__title">Nombre del banco <span class="obligatorio">*</span></label>
                 <nz-select nzShowSearch nzAllowClear formControlName="fkBanco">
                   <nz-option [nzDisabled]="true" [nzValue]="undefined" nzLabel="Seleccione un banco"></nz-option>
+                  <nz-option [nzValue]="item.id" [nzLabel]="item.nombre" *ngFor="let item of listBancos"></nz-option>
               </nz-select>
             </div>
             <div class="contendor__input">
-                <label for="" class="label__title">Nombre del beneficiario</label>
-                <input type="text" class="input__form" formControlName="nombreBeneficiario">
+                <label for="" class="label__title">Nombre del beneficiario <span class="obligatorio">*</span></label>
+                <input type="text" class="input__form" formControlName="nombreBeneficiario" placeholder="Ingrese un nombre de beneficiario">
             </div>
             <div class="contendor__input">
-                <label for="" class="label__title">Numero de cuenta</label>
-                <input type="text" class="input__form" formControlName="numeroCuenta">
+                <label for="" class="label__title">Numero de cuenta <span class="obligatorio">*</span></label>
+                <input type="text" class="input__form" formControlName="numeroCuenta" placeholder="Ingrese un numero de cuenta">
             </div>
         </div>
         <h2 class="sub-title">Información general</h2>
         <div class="contenedor__form-input">
             <div class="contendor__input">
-                <label for="" class="label__title">Fecha de creación de la empresa</label>
-                <nz-date-picker formControlName="fechaCreacionEmpresa"></nz-date-picker>
+                <label for="" class="label__title">Fecha de creación de la empresa <span class="obligatorio">*</span></label>
+                <nz-date-picker formControlName="fechaCreacionEmpresa" nzPlaceHolder="Seleccione una fecha"></nz-date-picker>
             </div>
             <div class="contendor__input">
-                <label for="" class="label__title">Categoria de la empresa</label>
+                <label for="" class="label__title">Categoria de la empresa <span class="obligatorio">*</span></label>
                 <nz-select nzShowSearch nzAllowClear formControlName="fkCategoria">
                     <nz-option [nzDisabled]="true" [nzValue]="undefined" nzLabel="Seleccione un tipo"></nz-option>
+                  <nz-option [nzValue]="item.id" [nzLabel]="item.nombre" *ngFor="let item of listBancos"></nz-option>
                 </nz-select>
             </div>
             <div class="contendor__input">
-                <label for="" class="label__title">Bruto anual en ventas</label>
-                <input type="number" class="input__form" formControlName="brutoAnual">
+                <label for="" class="label__title">Bruto anual en ventas <span class="obligatorio">*</span></label>
+                <input type="number" class="input__form" formControlName="brutoAnual" placeholder="Ingrese el ingresi bruto anual">
             </div>
         </div>
     </form>

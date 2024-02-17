@@ -1,10 +1,10 @@
 .contenedor {
-    margin-top: 19px;
-    width: 100%;
-    min-height: 380px;
-    border-radius: 20px;
-    background-color: white;
-    padding: 22px;
+  margin-top: 19px;
+  width: 100%;
+  min-height: 380px;
+  border-radius: 20px;
+  background-color: white;
+  padding: 22px;
 
   h2.title {
     color: #356a21;
@@ -20,7 +20,7 @@
     display: flex;
     justify-content: flex-end;
   }
-  
+
   .btn__agregar {
     border-radius: 16px;
     background: #356a21;
@@ -30,7 +30,7 @@
     border: none;
     outline: none;
     cursor: pointer;
-  
+
     color: white;
     text-align: center;
     font-size: 16px;
@@ -38,13 +38,13 @@
     font-weight: 500;
     line-height: 24px; /* 150% */
     letter-spacing: -0.32px;
-  
+
     padding: 0px 12px 0px 24px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 12px;
-  
+
     div.contenedor__svg {
       background-color: #448a26;
       width: 34px;
@@ -84,23 +84,28 @@ form {
   }
 }
 
+.obligatorio {
+  font-size: 19px;
+  color: red;
+}
+
 .input__form {
-    color: #000000d9;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 24px; /* 150% */
-    letter-spacing: -0.32px;
-    border-radius: 16px;
-    background: #fff;
-    border: 1px solid #d9d9d9;
-    min-width: 243px;
-    width: 100%;
-    height: 46px;
-    flex-shrink: 0;
-    outline: none;
-    padding: 0px 10px;
-  }
+  color: #000000d9;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px; /* 150% */
+  letter-spacing: -0.32px;
+  border-radius: 16px;
+  background: #fff;
+  border: 1px solid #d9d9d9;
+  min-width: 243px;
+  width: 100%;
+  height: 46px;
+  flex-shrink: 0;
+  outline: none;
+  padding: 0px 10px;
+}
 
 .contenedor__btn {
   margin-top: 22px;

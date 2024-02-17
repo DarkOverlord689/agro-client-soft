@@ -1,7 +1,7 @@
 <section class="contenedor">
 
     <div class="contenedor__btn-agregar">
-        <button class="btn__agregar">
+        <button class="btn__agregar" (click)="postInventario()">
             Agregar
             <div class="contenedor__svg">
                 <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 23 23" fill="none">
@@ -37,60 +37,77 @@
 
             <nz-qrcode nzValue="https://ng.ant.design/"></nz-qrcode>
         </div>
-        <form>
+        <form [formGroup]="formInventario">
             <div class="contenedor__form-input">
                 <div class="contendor__input">
-                    <label for="" class="label__title">Nombre del producto</label>
-                    <input type="text" class="input__form" placeholder="Ingrese su primer nombre">
+                    <label for="" class="label__title">Nombre del producto
+                        <span class="obligatorio">*</span>
+                    </label>
+                    <input type="text" class="input__form" formControlName="nombre" placeholder="Ingrese un nombre">
                 </div>
                 <div class="contendor__input">
-                    <label for="" class="label__title">Codigo del producto</label>
-                    <input type="text" class="input__form" placeholder="Ingrese su primer apellido">
+                    <label for="" class="label__title">Codigo del producto
+                    </label>
+                    <input type="text" class="input__form" formControlName="codigo" placeholder="Ingrese un codigo">
                 </div>
             </div>
             <div class="contenedor__form-input">
                 <div class="contendor__input">
-                    <label for="" class="label__title">Categoria del producto</label>
-                    <nz-select nzShowSearch nzAllowClear nzMode="multiple" nzPlaceHolder="Seleccione las localidades"
-                        [nzMaxTagCount]="1" formControlName="entity">
+                    <label for="" class="label__title">Categoria del producto
+                        <span class="obligatorio">*</span>
+                    </label>
+                    <nz-select nzPlaceHolder="Seleccione las localidades" nzPlaceHolder="Seleccione una categoria" formControlName="fkCategoria">
                         <nz-option [nzDisabled]="true" [nzValue]="undefined"
-                            nzLabel="Seleccione las localidades"></nz-option>
+                            nzLabel="Seleccione una categoria"></nz-option>
+                        <nz-option [nzValue]="item.id" [nzLabel]="item.nombre" *ngFor="let item of listCategoria"></nz-option>
                     </nz-select>
                 </div>
                 <div class="contendor__input">
-                    <label for="" class="label__title">Proveedor del producto</label>
-                    <nz-select nzShowSearch nzAllowClear nzMode="multiple" nzPlaceHolder="Seleccione las localidades"
-                        [nzMaxTagCount]="1" formControlName="entity">
+                    <label for="" class="label__title">Proveedor del producto
+                        <span class="obligatorio">*</span>
+                    </label>
+                    <nz-select nzPlaceHolder="Seleccione las localidades" nzPlaceHolder="Seleccione un proveedor" formControlName="fkProveedor">
                         <nz-option [nzDisabled]="true" [nzValue]="undefined"
-                            nzLabel="Seleccione las localidades"></nz-option>
+                            nzLabel="Seleccione un proveedor"></nz-option>
+                            <nz-option [nzValue]="item.id" [nzLabel]="item.nombre" *ngFor="let item of listProveedor"></nz-option>
                     </nz-select>
                 </div>
             </div>
             <div class="contenedor__form-input">
                 <div class="contendor__input">
-                    <label for="" class="label__title">Rango de vencimiento del producto</label>
-                    <nz-range-picker></nz-range-picker>
+                    <label for="" class="label__title">Rango de vencimiento del producto
+                        <span class="obligatorio">*</span>
+                    </label>
+                    <nz-range-picker formControlName="rango"></nz-range-picker>
 
                 </div>
                 <div class="contendor__input">
-                    <label for="" class="label__title">Costo del producto del proveedor</label>
-                    <input type="number" class="input__form" placeholder="$">
+                    <label for="" class="label__title">Costo del producto del proveedor
+                        <span class="obligatorio">*</span>
+                    </label>
+                    <input type="number" class="input__form" formControlName="costoProveedor" placeholder="$">
                 </div>
             </div>
             <div class="contenedor__form-input">
                 <div class="contendor__input">
-                    <label for="" class="label__title">Cantidad del producto</label>
-                    <input type="number" class="input__form" placeholder="Ingrese su primer nombre">
+                    <label for="" class="label__title">Cantidad del producto
+                        <span class="obligatorio">*</span>
+                    </label>
+                    <input type="number" class="input__form" formControlName="cantidadProveedor" placeholder="$">
                 </div>
                 <div class="contendor__input">
-                    <label for="" class="label__title">Valor de venta del producto</label>
-                    <input type="number" class="input__form" placeholder="$">
+                    <label for="" class="label__title">Valor de venta del producto
+                        <span class="obligatorio">*</span>
+                    </label>
+                    <input type="number" class="input__form" formControlName="valorVenta" placeholder="$">
                 </div>
             </div>
             <div class="contenedor__form-input">
                 <div class="contendor__input">
-                    <label for="" class="label__title">Descripción del producto</label>
-                    <textarea nz-input rows="4" placeholder="">
+                    <label for="" class="label__title">Descripción del producto
+                        <span class="obligatorio">*</span>
+                    </label>
+                    <textarea nz-input rows="4" formControlName="descripcion" placeholder="Ingrese una descripcion">
                     </textarea>
                 </div>
             </div>
@@ -98,7 +115,12 @@
             <nz-divider></nz-divider>
 
             <span class="valor-pagar">
-                Ganancia total: $5.000
+                Ganancia total: $
+                {{
+                (formInventario.value.valorVenta * formInventario.value.cantidadProveedor)
+                -
+                (formInventario.value.costoProveedor * formInventario.value.cantidadProveedor)
+                }}
             </span>
         </form>
     </div>

@@ -104,6 +104,17 @@ export class UtilsService {
     return fechaMoment.format('DD MMM YYYY'); // Puedes ajustar el formato según tus preferencias
   }
 
+  formatearFechaEspecials(fecha: string) {
+    let options: any = {
+      weekday: 'long',
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric',
+    };
+
+    return new Date(fecha).toLocaleDateString('es-ES', options);
+  }
+
   obtenerNumeroMesSeleccionado(mes: any): number | null {
     if (mes) {
       // La función getMonth() devuelve un número de 0 a 11, donde 0 es enero y 11 es diciembre

@@ -28,7 +28,7 @@
 
   <ng-container [ngSwitch]="tagActivo">
     <div *ngSwitchCase="1">
-      <app-table-productos-list (emittirInventarioSeleccionado)="recibirInventarioSeleccionado($event)"></app-table-productos-list>
+      <app-table-productos-list [listInventario]="listInventario" (emittirInventarioSeleccionado)="recibirInventarioSeleccionado($event)"></app-table-productos-list>
     </div>
     <div *ngSwitchCase="2">
       <app-form-productos [inventarioSeleccionado]="inventarioSeleccionado!" (notificarCambioTag)="recibirNotificarCambioTag()"></app-form-productos>

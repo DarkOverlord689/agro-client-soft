@@ -1,6 +1,6 @@
 <div class="contenedor__btn-agregar">
   <button class="btn__agregar" type="submit" (click)="postInventarioUpdate()">
-    Agregar
+    Modificar
     <div class="contenedor__svg">
       <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 23 23" fill="none">
         <g clip-path="url(#clip0_58_750)">
@@ -44,7 +44,12 @@
       </div>
       <nz-divider></nz-divider>
       <span class="valor-pagar">
-        Ganancia total: $5.000
+        Ganancia total: $
+        {{
+        (formsInventario.value.valorVenta * formsInventario.value.cantidadProveedor)
+        -
+        (formsInventario.value.costoProveedor * formsInventario.value.cantidadProveedor)
+        }}
       </span>
     </form>
   </div>

@@ -73,9 +73,9 @@ export class HttpImplService {
   * @date 2023-10-15
   * @description metodo para manejar los resultados a eliminar
   */
-  eliminar<T>(ruta: string, body: T): Promise<T> {
+  eliminar<T>(ruta: string): Promise<T> {
     return new Promise<T>((resolve, reject) => {
-      this._http.guardar<T>(ruta, body).subscribe({
+      this._http.eliminar<T>(ruta).subscribe({
         next: (value: T) => {
           resolve(value);
         },

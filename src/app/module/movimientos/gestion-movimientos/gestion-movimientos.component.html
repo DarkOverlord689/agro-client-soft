@@ -1,11 +1,10 @@
 <section class="contenedor">
-    <ng-container *ngIf="listInventario.length > 0; then dataMain; else noDataMain"></ng-container>
+    <ng-container *ngIf="listMovimientos.length > 0; then dataMain; else noDataMain"></ng-container>
     <ng-template #dataMain>
-        <div class="contenedor__table" [ngStyle]="{'min-height': listInventario.length > 0 ? '100px' : '300px'}">
+        <div class="contenedor__table" [ngStyle]="{'min-height': listMovimientos.length > 0 ? '100px' : '300px'}">
             <table>
                 <thead>
                     <tr>
-                        <th></th>
                         <th style="width: 200px;">Fecha del movimiento</th>
                         <th style="width: 200px;">Tipo de movimiento</th>
                         <th style="width: 200px;">Ingreso</th>
@@ -14,16 +13,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    <tr *ngFor="let item of listMovimientos">
+                        <td>{{ item.fechaVenta }}</td>
+                        <td>{{ item.fkTipoVenta }}</td>
+                        <td>{{ "$" + item.ingreso }}</td>
+                        <td>{{ "$" + item.egreso }}</td>
                         <td>
-                            <label nz-checkbox></label>
-                        </td>
-                        <td>18 de enero del 2024</td>
-                        <td>Ingreso</td>
-                        <td>$ 500</td>
-                        <td>$ 7.500</td>
-                        <td>
-                            Gabriel Fernandez
+                            {{ item.fkVendedor }}
                         </td>
                     </tr>
                 </tbody>
@@ -31,9 +27,9 @@
         </div>
 
         <div class="paginador">
-            <span>Usuarios activos: <span>{{ pageSize > listInventario.length ? listInventario.length :
-                    pageSize}}</span>/{{listInventario.length}}</span>
-            <mat-paginator [length]="listInventario.length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions">
+            <span>Usuarios activos: <span>{{ pageSize > listMovimientos.length ? listMovimientos.length :
+                    pageSize}}</span>/{{listMovimientos.length}}</span>
+            <mat-paginator [length]="listMovimientos.length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions">
                 <!-- (page)="getListUser()" -->
             </mat-paginator>
         </div>

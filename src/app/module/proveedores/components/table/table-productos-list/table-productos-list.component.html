@@ -14,17 +14,18 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
+        <tr *ngFor="let item of listInventario">
           <td>
-            <label nz-checkbox [(ngModel)]="estadoFila" (change)="emittirInventarioSeleccionadoMet(1)"></label>
+            <label nz-checkbox [nzChecked]="filaSeleccionada == item.id && estadoFila == true" (change)="emittirInventarioSeleccionadoMet(item)"></label>
           </td>
-          <td>PAN-01</td>
-          <td>Pan</td>
-          <td>Arina</td>
-          <td>Coltex</td>
-          <td>23</td>
+          <td>{{ item.codigo }}</td>
+          <td>{{ item.nombre }}</td>
+          <td>{{ item.fkCategoria }}</td>
+          <td>{{ item.fkProveedor }}</td>
+          <td>{{ item.cantidadProveedor }}</td>
           <td class="item-action">
-            <nz-switch nzSize="small" (click)="changeEstadoProveedor(1,1)"></nz-switch>
+            <nz-switch nzSize="small" [(ngModel)]="item.estado"
+              (ngModelChange)="changeEstadoInventario(item.id,item.estado)"></nz-switch>
             <!-- <div class="aumentar" nz-tooltip nzTooltipTitle="Aumentar la cantidad de stock">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                 class="bi bi-plus" viewBox="0 0 16 16">

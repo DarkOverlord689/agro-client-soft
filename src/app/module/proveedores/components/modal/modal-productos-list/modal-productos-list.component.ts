@@ -14,19 +14,18 @@ import { IInventarioSeleccionado } from '../../../models/IInventario.interface';
 export class ModalProductosListComponent implements OnInit {
   @Output() abrirModalAgregar: EventEmitter<boolean> = new EventEmitter(false);
 
-  @Input() listInventario: any[] = [];
-
+  @Input() proveedorId: number = 0;
+  listInventario: any[] = [];
 
   inventarioSeleccionado!: IInventarioSeleccionado | null;
 
   isEditarInventario: boolean = false;
 
-
   constructor(
     private _httpService: HttpService,
     private _httpImplService: HttpImplService,
     private message: NzMessageService
-  ) { }
+  ) {}
 
   tagActivo: number = 1;
   tag: ITag[] = [
@@ -47,6 +46,8 @@ export class ModalProductosListComponent implements OnInit {
 
   ngOnInit(): void {
     this._httpService.apiUrl = environment.url;
+
+    this.getProveedoresByInventario(this.proveedorId);
   }
 
   // EVENTS
@@ -66,8 +67,9 @@ export class ModalProductosListComponent implements OnInit {
     this.isEditarInventario = false;
     this.inventarioSeleccionado = null;
     this.tagActivo = 1;
-  }
 
+    this.getProveedoresByInventario(this.proveedorId);
+  }
 
   recibirInventarioSeleccionado(event: IInventarioSeleccionado) {
     this.inventarioSeleccionado = event;
@@ -80,13 +82,29 @@ export class ModalProductosListComponent implements OnInit {
     this.isEditarInventario = false;
   }
 
+  // HTTP
+  async getProveedoresByInventario(proveedorId: number) {
+    await this._httpImplService
+      .obtener(`inventario/list-by-proveedor?proveedorId=${proveedorId}`)
+      .then((value: any) => {
+        this.listInventario = value;
+      })
+      .catch((reason) => {
+        console.log(reason);
+      });
+  }
 
   async changeEstadoDelInventario(inventarioId: number, estado: number) {
-    await this._httpImplService.actualizar(`inventario/update-status?inventarioId=${inventarioId}&estado=${estado}`, {})
+    await this._httpImplService
+      .actualizar(
+        `inventario/update-status?inventarioId=${inventarioId}&estado=${estado}`,
+        {}
+      )
       .then((value: any) => {
-        this.message.success("Estado del inventario modificado correctamente");
-      }).catch((reason) => {
-        console.log(reason);
+        this.message.success('Estado del inventario modificado correctamente');
       })
+      .catch((reason) => {
+        console.log(reason);
+      });
   }
 }

@@ -18,11 +18,9 @@
                 <!-- Left options container -->
                 <div class="opciones__izq">
 
-                    <!-- Button to view notifications -->
                     <button>
-                        Ver notificaciones
+                        Ver ventas en curso
 
-                        <!-- Dropdown indicator -->
                         <div class="select__desplegar" (click)="router.navigateByUrl('/main/tareas')">
                             >
                         </div>
@@ -44,7 +42,7 @@
             <div class="contendor__fechas-especiales">
 
                 <!-- Loop through a set of items using AngularJS ngFor directive -->
-                <div class="fechas__especiales-cont" *ngFor="let item of [1, 2, 3, 4]">
+                <div class="fechas__especiales-cont" *ngFor="let item of listFechasEspeciales">
 
                     <!-- Container for each special date -->
                     <div>
@@ -55,48 +53,66 @@
 
                     <!-- Paragraph for the special date with highlighted text -->
                     <span class="fechas__especiales-parrafo">
-                        <span class="resaltar">6 de enero.</span> Cumpleaños de Esther Howard
+                        <span class="resaltar">{{_utilsService.formatearFechaEspecials(item.fecha)}}</span> {{ item.descripcion}}
                     </span>
                 </div>
             </div>
         </section>
 
-        <!-- Section with class "section-3" -->
+      <!-- Section with class "section-3" -->
+      <form [formGroup]="formNotas" (ngSubmit)="!changeDescripcion ? postNotas() : changeNameNota()" class="form__notas">
         <section class="section-3">
-
             <!-- Heading for personal notes -->
             <h2>Mis notas</h2>
-
             <!-- Container for adding a new note -->
             <div class="contenedor__agregar-nota">
 
                 <!-- Input field for entering a new note -->
-                <input type="text" placeholder="Escribe aqui...">
+                <input type="text" placeholder="Escribe aqui..." formControlName="nota">
 
                 <!-- Button to add the new note -->
-                <button>Agregar</button>
+                <button type="submit">{{ changeDescripcion ? 'Modificar' : 'Agregar' }}</button>
             </div>
 
             <!-- Container for displaying existing notes -->
             <div class="contendor__notas-especiales">
 
-                <!-- Loop through a set of items using AngularJS ngFor directive -->
-                <div class="contendor__notas-cont" *ngFor="let item of [1, 2, 3, 4, 69, 85, 8, 6, 47]">
+                <ng-container *ngIf="notas.length > 0; then dataMain; else noDataMain">
+                </ng-container>
+                <ng-template #dataMain>
+                                        <!-- Loop through a set of items using AngularJS ngFor directive -->
+                <div class="contendor__notas-cont" *ngFor="let item of notas">
 
                     <!-- Image for marking the note as completed -->
-                    <img src="../../../../assets/icons/dashboards/check.svg" alt="">
+                    <img src="../../../../assets/icons/dashboards/check.svg" alt="" style="cursor: pointer"
+                        nz-popconfirm nzPopconfirmTitle="¿Esta seguro de eliminar la nota?" nzOkText="Aceptar"
+                        nzCancelText="Cancelar" (nzOnConfirm)="confirm(item.id)" (nzOnCancel)="cancel()">
+                    <!-- <img src="../../../../assets/icons/dashboards/delete.svg" alt=""> -->
 
                     <!-- Image for deleting the note -->
-                    <img src="../../../../assets/icons/dashboards/delete.svg" alt="">
+                    <label nz-checkbox [(ngModel)]="item.estado" [ngModelOptions]="{standalone: true}"
+                        (ngModelChange)="changeStatus(item.id, item.estado)"></label>
 
                     <!-- Paragraph for the note content -->
-                    <span class="especiales__notas-parrafo">
-                        Excepteur sint occaecat cupidatat non proident
-                    </span>
+                    <ng-container *ngIf="!changeDescripcion || itemSeleccionadoNota.id != item.id; else bloqueNotaFalse">
+                        <span class="especiales__notas-parrafo" (click)="changeDescripcionNota(item)">
+                            {{ item.descripcion }}
+                        </span>
+                    </ng-container>
+                    <ng-template #bloqueNotaFalse>
+                        <input type="text" formControlName="nota" class="input__description">
+                    </ng-template>
                 </div>
+                </ng-template>
+                <ng-template #noDataMain>
+                    <div class="no__hay-datos">
+                        <span>No hay notas disponibles</span>
+                      </div>
+                </ng-template>
             </div>
         </section>
-    </div>
+    </form>
+</div>
 
 
     <div class="card-2">

@@ -14,6 +14,7 @@ export class GestionProveedoresComponent implements OnInit {
   listProveedores: any[] = [];
   listInventario: any[] = [];
 
+  proveedorSeleccionado: number = 0;
 
   @Output() ceacionDeInventario: EventEmitter<boolean> = new EventEmitter(
     false
@@ -49,7 +50,7 @@ export class GestionProveedoresComponent implements OnInit {
     this.isVisibleProductList = !this.isVisibleProductList;
 
     if (this.isVisibleProductList) {
-      this.getProveedoresByInventario(proveedorId)
+      this.proveedorSeleccionado = proveedorId;
     }
   }
 
@@ -58,22 +59,16 @@ export class GestionProveedoresComponent implements OnInit {
     await this._httpImplService.obtener("proveedores/list")
       .then((value: any) => {
         this.listProveedores = value;
+        this.listProveedores = this.listProveedores.map(value => {
+          return {...value, estado: value.estado == 1 ? true : false}
+        }).sort((a: any, b: any) => b.estado - a.estado)
       }).catch((reason) => {
         console.log(reason);
       })
   }
 
-  async getProveedoresByInventario(proveedorId: number) {
-    await this._httpImplService.obtener(`inventario/list-by-proveedor?proveedorId=${proveedorId}`)
-      .then((value: any) => {
-        this.listInventario = value;
-      }).catch((reason) => {
-        console.log(reason);
-      })
-  }
-
-  async changeEstadoProveedor(proveedorId: number, estado: number) {
-    await this._httpImplService.actualizar(`proveedores/update-status?proveedorId=${proveedorId}&estado=${estado}`, {})
+  async changeEstadoProveedor(proveedorId: number, estado: boolean) {
+    await this._httpImplService.actualizar(`proveedores/update-status?proveedorId=${proveedorId}&estado=${estado ? 1 : 0}`, {})
       .then((value: any) => {
         this.message.success("Estado del proveedor modificado correctamente");
         this.getProveedores();

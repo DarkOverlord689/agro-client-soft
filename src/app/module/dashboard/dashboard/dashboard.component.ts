@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NzMessageService } from 'ng-zorro-antd/message';
 import { HttpService } from 'src/app/shared/services/http.service';
 import { HttpImplService } from 'src/app/shared/services/impl/http-impl.service';
 import { UtilsService } from 'src/app/shared/utils/utils.service';
@@ -10,13 +12,18 @@ import { environment } from 'src/environment/environment';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
 })
-export class DashboardComponent {
+export class DashboardComponent implements OnInit, OnChanges {
   /** Objeto que contiene la información climática. */
   clima: any;
   /** Entidad seleccionada para la consulta climática. */
   entidadSeleccionada: string = '';
   /** listado de fechas especiales */
   listFechasEspeciales: any[] = [];
+
+  notas: any[] = [];
+  formNotas: FormGroup;
+  changeDescripcion: boolean = false;
+  itemSeleccionadoNota: any;
 
   /** Niveles de humedad y viento. */
   humedad: number = 0;
@@ -79,8 +86,17 @@ export class DashboardComponent {
     private _httpService: HttpService,
     private _httpImplService: HttpImplService,
     public _utilsService: UtilsService,
-    public router: Router
-  ) { }
+    public router: Router,
+    private message: NzMessageService,
+    private formBuilder: FormBuilder
+  ) {
+    this.formNotas = this.formBuilder.group({
+      nota: ['', [Validators.required]],
+    });
+  }
+  ngOnChanges(changes: SimpleChanges): void {
+    //
+  }
 
   /**
    * Inicialización del componente.
@@ -103,6 +119,31 @@ export class DashboardComponent {
     //     this._utilsService.getLocalStorages('notificaciones')
     //   );
     // }, 0);
+
+    this.getFechasEspeciales();
+    this.getNotas();
+  }
+
+  // EVENT
+  changeDescripcionNota(item: any) {
+    if (this.itemSeleccionadoNota != item) {
+      this.changeDescripcion = true;
+      this.formNotas.get('nota')?.setValue(item.descripcion);
+    } else {
+      this.changeDescripcion = !this.changeDescripcion;
+    }
+
+    this.itemSeleccionadoNota = item;
+    if (!this.changeDescripcion) {
+      this.formNotas.reset();
+      this.itemSeleccionadoNota = null;
+    }
+  }
+
+  cancel(): void {}
+
+  confirm(nota: number): void {
+    this.deleteNota(nota);
   }
 
   // METODOS
@@ -147,14 +188,93 @@ export class DashboardComponent {
       });
   }
 
-
   async getFechasEspeciales() {
     this._httpService.apiUrl = environment.url;
-    await this._httpImplService.obtener("list")
+    await this._httpImplService
+      .obtener('fechas-especiales/list')
       .then((value: any) => {
         this.listFechasEspeciales = value;
-      }).catch((reason) => {
-        console.log(reason);
       })
+      .catch((reason) => {
+        console.log(reason);
+      });
+  }
+
+  async getNotas() {
+    this._httpService.apiUrl = environment.url;
+    await this._httpImplService
+      .obtener('notas/list?user=1')
+      .then((value: any) => {
+        this.notas = value;
+        this.notas = this.notas
+          .map((value) => {
+            return {
+              ...value,
+              estado: value.estado == 1 ? true : false,
+            };
+          })
+          .sort((a: any, b: any) => a.estado - b.estado);
+      });
+  }
+
+  async postNotas() {
+    if (this.formNotas.invalid) {
+      this.message.info('No puede agregar una nota con el campo vacio');
+      return;
+    }
+    this._httpService.apiUrl = environment.url;
+    await this._httpImplService
+      .guardar('notas/created-notas', {
+        fkUser: 1,
+        descripcion: this.formNotas.get('nota')?.value,
+        estado: 0,
+        orden: 1,
+      })
+      .then(async (value: any) => {
+        this.message.success('Nota agregada correctamente');
+        this.formNotas.reset();
+        await this.getNotas();
+      });
+  }
+
+  async changeStatus(nota: number, estado: boolean) {
+    this._httpService.apiUrl = environment.url;
+    await this._httpImplService
+      .actualizar(`notas/change-status-notas?id=${nota}&estado=${estado ? 1 : 0}`, {})
+      .then(async (value: any) => {
+        this.message.success(
+          'Cambio de estado de la nota cambiado correctamente'
+        );
+        await this.getNotas();
+      });
+  }
+
+  async changeNameNota() {
+    if (this.formNotas.invalid) {
+      this.message.info('No puede modificar una nota con el campo vacio');
+      return;
+    }
+
+    this._httpService.apiUrl = environment.url;
+    await this._httpImplService
+      .actualizar(`notas/change-name-notas?id=${this.itemSeleccionadoNota.id}&descripcion=${this.formNotas.value.nota}`, {})
+      .then(async (value: any) => {
+        this.message.success(
+          'Cambio de nombte de la nota cambiado correctamente'
+        );
+        this.changeDescripcion = false;
+        this.formNotas.reset();
+        await this.getNotas();
+      });
+  }
+
+  async deleteNota(nota: number) {
+    this._httpService.apiUrl = environment.url;
+    await this._httpImplService
+      .eliminar(`notas/delete-nota?id=${nota}`)
+      .then(async (value: any) => {
+        this.message.success('Nota eliminada correctamente');
+        await this.getNotas();
+      });
   }
 }
