@@ -11,9 +11,6 @@ import { ITag } from 'src/app/shared/models/tag.interface';
     ></app-sub-navbar>
     <section>
       <ng-container [ngSwitch]="codigoTagActive">
-        <div *ngSwitchCase="'DAS_PRO'">
-          <app-dashboard-proveedores></app-dashboard-proveedores>
-        </div>
         <div *ngSwitchCase="'GES_PRO'">
           <app-gestion-proveedores
             (ceacionDeInventario)="recibirEmitCreacionInventario($event)"
@@ -38,28 +35,22 @@ export class ProveedoresComponent {
   agregarPestaña: boolean = false;
 
   constructor() {
-    this.codigoTagActive = 'DAS_PRO';
+    this.codigoTagActive = 'GES_PRO';
     this.tag = [
       {
         id: 1,
-        codigo: 'DAS_PRO',
-        nombreTag: 'Dashboard de proveedores',
-        iconTag: '../../../../assets/icons/tags/suspensivo.svg',
-      },
-      {
-        id: 2,
         codigo: 'GES_PRO',
         nombreTag: 'Gestión de proveedores',
         iconTag: '../../../../assets/icons/tags/suspensivo.svg',
       },
       {
-        id: 3,
+        id: 2,
         codigo: 'CRE_PRO',
         nombreTag: 'Creación de proveedores',
         iconTag: '../../../../assets/icons/tags/suspensivo.svg',
       },
       {
-        id: 4,
+        id: 3,
         codigo: 'CRE_INV',
         nombreTag: 'Creación de inventario',
         iconTag: '../../../../assets/icons/tags/suspensivo.svg',

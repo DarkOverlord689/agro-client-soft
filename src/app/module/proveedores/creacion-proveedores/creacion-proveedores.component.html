@@ -83,7 +83,7 @@
                 <label for="" class="label__title">Categoria de la empresa <span class="obligatorio">*</span></label>
                 <nz-select nzShowSearch nzAllowClear formControlName="fkCategoria">
                     <nz-option [nzDisabled]="true" [nzValue]="undefined" nzLabel="Seleccione un tipo"></nz-option>
-                  <nz-option [nzValue]="item.id" [nzLabel]="item.nombre" *ngFor="let item of listBancos"></nz-option>
+                  <nz-option [nzValue]="item.id" [nzLabel]="item.nombre" *ngFor="let item of listCategoria"></nz-option>
                 </nz-select>
             </div>
             <div class="contendor__input">

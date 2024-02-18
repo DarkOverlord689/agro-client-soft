@@ -1,0 +1,130 @@
+<section class="contenedor">
+    <div class="cont__filtro">
+        <div class="filtros__izq">
+            <!-- SELECT -->
+            <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Seleccione una categoria" [(ngModel)]="selectCategoria"
+                (ngModelChange)="changeCategoria()">
+                <nz-option [nzDisabled]="true" [nzValue]="undefined" nzLabel="Seleccione una categoria"></nz-option>
+                <nz-option [nzLabel]="item.nombre" [nzValue]="item.codigo"
+                    *ngFor="let item of categoriasMaestras"></nz-option>
+            </nz-select>
+            <!-- <nz-switch [nzCheckedChildren]="checkedTemplate" [nzUnCheckedChildren]="unCheckedTemplate"></nz-switch> -->
+            <ng-template #checkedTemplate><span nz-icon nzType="check"></span></ng-template>
+            <ng-template #unCheckedTemplate><span nz-icon nzType="close"></span></ng-template>
+
+
+            <div class="busqueda">
+                <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none">
+                    <path
+                        d="M20.5605 18.4395L16.7528 14.6318C17.5395 13.446 18 12.0262 18 10.5C18 6.3645 14.6355 3 10.5 3C6.3645 3 3 6.3645 3 10.5C3 14.6355 6.3645 18 10.5 18C12.0262 18 13.446 17.5395 14.6318 16.7528L18.4395 20.5605C19.0245 21.1462 19.9755 21.1462 20.5605 20.5605C21.1462 19.9748 21.1462 19.0252 20.5605 18.4395ZM5.25 10.5C5.25 7.605 7.605 5.25 10.5 5.25C13.395 5.25 15.75 7.605 15.75 10.5C15.75 13.395 13.395 15.75 10.5 15.75C7.605 15.75 5.25 13.395 5.25 10.5Z"
+                        fill="white" />
+                </svg>
+            </div>
+
+            <div class="contenedor__btn-agregar" (click)="crearCategoriaMaestra = !crearCategoriaMaestra; formsCategoriaMaestra.reset()">
+                <button class="btn__agregar" style="width: 50px; background: transparent; height: auto;" nz-tooltip
+                    nzTooltipTitle="Agregar una nueva categoria" nzTooltipColor="green">
+                    <div class="contenedor__svg" style="width: 37px;height: 37px;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 23 23" fill="none">
+                            <g clip-path="url(#clip0_58_750)">
+                                <path
+                                    d="M11.0589 1.84314C5.97189 1.84314 1.84326 5.97177 1.84326 11.0588C1.84326 16.1459 5.97189 20.2745 11.0589 20.2745C16.146 20.2745 20.2746 16.1459 20.2746 11.0588C20.2746 5.97177 16.146 1.84314 11.0589 1.84314ZM15.6668 11.9804H11.9805V15.6667H10.1374V11.9804H6.4511V10.1373H10.1374V6.45098H11.9805V10.1373H15.6668V11.9804Z"
+                                    fill="white" />
+                            </g>
+                            <defs>
+                                <clipPath id="clip0_58_750">
+                                    <rect width="22.1176" height="22.1176" fill="white" />
+                                </clipPath>
+                            </defs>
+                        </svg>
+                    </div>
+                </button>
+            </div>
+
+            <form [formGroup]="formsCategoriaMaestra" (keydown.enter)="postCategoriaMaestra()" *ngIf="crearCategoriaMaestra">
+                <input type="text" class="input__line" placeholder="Ingrese el nombre de la categoria" formControlName="nombre">
+            </form>
+        </div>
+
+        <div class="filtros__der" *ngIf="listCategoriaByMaestros.length > 0 || selectCategoria">
+            <!-- BOTON AGREGAR -->
+            <div class="contenedor__btn-agregar" (click)="crearCategoria ? postCategoria() : '';crearCategoria = !crearCategoria;formsCategoria.reset()">
+                <button class="btn__agregar" nz-tooltip
+                    nzTooltipTitle="Agregar una nueva tarea al cargo actualmente seleccionado" nzTooltipColor="green">
+                    {{ crearCategoria ? 'Adicionar' : 'Agregar' }}
+                    <div class="contenedor__svg">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 23 23" fill="none">
+                            <g clip-path="url(#clip0_58_750)">
+                                <path
+                                    d="M11.0589 1.84314C5.97189 1.84314 1.84326 5.97177 1.84326 11.0588C1.84326 16.1459 5.97189 20.2745 11.0589 20.2745C16.146 20.2745 20.2746 16.1459 20.2746 11.0588C20.2746 5.97177 16.146 1.84314 11.0589 1.84314ZM15.6668 11.9804H11.9805V15.6667H10.1374V11.9804H6.4511V10.1373H10.1374V6.45098H11.9805V10.1373H15.6668V11.9804Z"
+                                    fill="white" />
+                            </g>
+                            <defs>
+                                <clipPath id="clip0_58_750">
+                                    <rect width="22.1176" height="22.1176" fill="white" />
+                                </clipPath>
+                            </defs>
+                        </svg>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </div>
+    <form [formGroup]="formsCategoria">
+        <div class="contenedor__tabla">
+            <ng-container *ngIf="listCategoriaByMaestros.length > 0 || crearCategoria; then dataMain; else noDataMain"></ng-container>
+            <ng-template #dataMain>
+                <div class="contenedor__table"
+                    [ngStyle]="{'min-height': listCategoriaByMaestros.length > 0 ? '100px' : '300px'}">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Código</th>
+                                <th>Nombre</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of listCategoriaByMaestros">
+                                <td>{{ item.codigo }}</td>
+                                <td>{{ item.nombre }}</td>
+                                <td>
+                                    <nz-switch nzSize="small" [(ngModel)]="item.estado" [ngModelOptions]="{standalone: true}" (ngModelChange)="changeEstadoCategoria(item.id, item.estado)"></nz-switch>
+                                </td>
+                            </tr>
+                            <tr *ngIf="crearCategoria">
+                                <td>
+                                </td>
+                                <td>
+                                    <input type="text" class="input__form" formControlName="nombre">
+                                </td>
+                                <td>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="paginador">
+                    <span>Usuarios activos: <span>{{ pageSize > listCategoriaByMaestros.length ?
+                            listCategoriaByMaestros.length :
+                            pageSize}}</span>/{{listCategoriaByMaestros.length}}</span>
+                    <mat-paginator [length]="listCategoriaByMaestros.length" [pageSize]="pageSize"
+                        [pageSizeOptions]="pageSizeOptions">
+                        <!-- (page)="getListUser()" -->
+                    </mat-paginator>
+                </div>
+            </ng-template>
+            <ng-template #noDataMain>
+                <div class="no__hay-datos">
+                    <img src="../../../../assets/icons/table/vacio.svg" alt="">
+                </div>
+            </ng-template>
+        </div>
+    </form>
+</section>
+
+<!-- 
+<div class="modal">
+    <app-modal-created-categoria></app-modal-created-categoria>
+</div> -->

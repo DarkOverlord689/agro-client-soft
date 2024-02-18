@@ -93,3 +93,60 @@ section.contenedor__modal {
   }
 
   
+
+  // TABLE
+  .contenedor__table {
+    max-height: 385px;
+    min-height: 300px;
+    overflow-y: scroll;
+    width: 100%;
+  }
+  
+  table {
+    width: 100%;
+  
+    thead {
+      width: 100%;
+      position: sticky;
+      top: 0;
+      background-color: white;
+  
+      tr {
+        width: 100%;
+  
+        th {
+          max-width: 200px;
+          color: var(--Color-4, #232323);
+          font-family: Poppins;
+          font-size: 14px;
+          font-style: normal;
+          font-weight: 500;
+          line-height: normal;
+          padding: 10px 0px;
+          border: 1px solid #fafafa;
+          background: #fafafa;
+        }
+      }
+    }
+  
+    tbody {
+      width: 100%;
+      tr {
+        width: 100%;
+  
+        td {
+          padding: 15px 0px;
+          min-width: 59px;
+          color: var(--Secondary-Color, #232323);
+          font-family: Poppins;
+          font-size: 12px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: normal;
+          text-align: center;
+          border: 1px solid #fafafa;
+        }
+      }
+    }
+  }
+  

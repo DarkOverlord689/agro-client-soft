@@ -5,6 +5,7 @@ import { HttpService } from 'src/app/shared/services/http.service';
 import { HttpImplService } from 'src/app/shared/services/impl/http-impl.service';
 import { environment } from 'src/environment/environment';
 import { IVentas } from '../models/IVentas.interface';
+import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Component({
   selector: 'app-compra-actual-ventas',
@@ -18,6 +19,7 @@ export class CompraActualVentasComponent implements OnInit {
     private _httpService: HttpService,
     private _httpImplServicie: HttpImplService,
     public _compraService: CompraService,
+    private message: NzMessageService,
     private _utilsService: UtilsService
   ) {}
   ngOnInit(): void {
@@ -33,6 +35,22 @@ export class CompraActualVentasComponent implements OnInit {
     });
   }
 
+  aumentarProducto(item: IVentas) {
+    const cantidadDisponible = this.listProductos.find(
+      (value: IVentas) => value.id == item.id
+    )?.disponible;
+    console.log(item.cantidad + 1);
+    console.log(cantidadDisponible);
+
+    if (item.cantidad + 1 > cantidadDisponible!) {
+      this.message.warning(
+        'No es posible aumentar la cantidad, no contamos con esa cantidad para este producto'
+      );
+      return;
+    }
+    this._compraService.addCantidad(item.id, 1, false);
+  }
+
   async postVenta() {
     let ventaTotal: number = 0;
 
@@ -40,18 +58,43 @@ export class CompraActualVentasComponent implements OnInit {
       ventaTotal += value.cantidad * value.precio;
     });
 
-    await this._httpImplServicie.guardar('ventas/created-venta', {
-      fechaVenta: this._utilsService.formatDate(new Date()),
-      fkTipoVenta: 4,
-      fkVendedor: 1,
-      monto: ventaTotal,
-      facturaUrl: 'www.example.com',
-      ingreso: ventaTotal,
-      egreso: 0,
-    });
+    await this._httpImplServicie
+      .guardar('ventas/created-venta', {
+        fechaVenta: this._utilsService.formatDate(new Date()),
+        fkTipoVenta: 4,
+        fkVendedor: 1,
+        monto: ventaTotal,
+        facturaUrl: 'www.example.com',
+        ingreso: ventaTotal,
+        egreso: 0,
+      })
+      .then((value: any) => {
+        this.postVentaDetalle(value);
+      })
+      .catch((reason: any) => {
+        console.log(reason);
+      });
   }
 
-  async postVentaDetalle() {
-    await this._httpImplServicie.guardar('ventas/created-venta-detalle', {});
+  async postVentaDetalle(idVenta: number) {
+    const ventaJson: any[] = [];
+
+    this.listProductos.forEach((value: IVentas) => {
+      ventaJson.push({
+        codigo: value.codigo,
+        fkProducto: value.id,
+        fkVenta: idVenta,
+        cantidad: value.cantidad,
+      });
+    });
+    await this._httpImplServicie
+      .guardar('ventas/created-venta-detalle', ventaJson)
+      .then((value: any) => {
+        this.message.success('Venta agregada exitosamente');
+        this._compraService.eliminarProducto(-1);
+      })
+      .catch((reason: any) => {
+        console.log(reason);
+      });
   }
 }

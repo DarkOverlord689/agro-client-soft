@@ -42,7 +42,7 @@ export class GestionUsuariosComponent implements OnInit {
 
   async getListUser() {
     await this._httpImplService
-      .obtener('usuarios/list')
+      .obtener('cliente/list')
       .then((value: any) => {
         this.listUser = value;
       })
@@ -52,7 +52,7 @@ export class GestionUsuariosComponent implements OnInit {
   async changeStatusUser(item: any) {
     await this._httpImplService
       .actualizar(
-        `usuarios/update-status?user=${item.id}&estado=${item.estado ? 1 : 0}`,
+        `cliente/update-status?user=${item.id}&estado=${item.estado ? 1 : 0}`,
         {}
       )
       .then((value: any) => {

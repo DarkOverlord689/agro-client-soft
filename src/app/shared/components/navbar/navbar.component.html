@@ -11,19 +11,18 @@
             <input type="text" placeholder="Buscar aqui...">
         </div>
         <div class="opciones__user">
-            <div class="user__notificacion">
+            <!-- <div class="user__notificacion">
                 <picture>
                     <img src="../../../../assets/icons/sidebar/inventario.svg" alt="">
                 </picture>
                 <div class="notificacion"></div>
-            </div>
+            </div> -->
 
             <picture class="user__perfil">
                 <img class="perfil" [src]="foto" [alt]="foto">
                 <div class="perfil__datos">
                     <div class="datos">
                         <h3>{{ (nombre) || ''}}</h3>
-                        <span>{{ ((perfil) || 'Cliente') }}</span>
                     </div>
 
                     <img style="cursor: pointer;" src="../../../../assets/icons/navbar/flecha.svg" alt="" nz-dropdown

@@ -5,5 +5,6 @@ export interface IVentas {
     descripcion: string;
     categoria: string;
     cantidad: number;
+    disponible: number;
     precio: number;
 }

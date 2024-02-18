@@ -1,0 +1,128 @@
+<section class="contenedor__modal">
+    <button class="close" (click)="emitirCerradoModal()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path
+                d="M12.6666 4.2735L11.7266 3.3335L7.99992 7.06016L4.27325 3.3335L3.33325 4.2735L7.05992 8.00016L3.33325 11.7268L4.27325 12.6668L7.99992 8.94016L11.7266 12.6668L12.6666 11.7268L8.93992 8.00016L12.6666 4.2735Z"
+                fill="#356a21" />
+        </svg>
+    </button>
+
+
+    <h2>
+        Nuevo usuario
+    </h2>
+
+    <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+        <div class="contenedor__form-input">
+            <div class="contendor__input">
+                <label for="primerNombre">
+                    Primer Nombre:
+                    <span class="obligatorio">*</span>
+                </label>
+                <input type="text" class="input__form" id="primerNombre" formControlName="primerNombre">
+            </div>
+            <div class="contendor__input">
+                <label for="segundoNombre">
+                    Segundo Nombre:
+                </label>
+                <input type="text" class="input__form" id="segundoNombre" formControlName="segundoNombre">
+            </div>
+        </div>
+        <div class="contenedor__form-input">
+            <div class="contendor__input">
+                <label for="primerApellido">Primer Apellido:
+                    <span class="obligatorio">*</span>
+                </label>
+                <input type="text" class="input__form" id="primerApellido" formControlName="primerApellido">
+            </div>
+            <div class="contendor__input">
+
+                <label for="segundoApellido">Segundo Apellido:</label>
+                <input type="text" class="input__form" id="segundoApellido" formControlName="segundoApellido">
+            </div>
+        </div>
+
+        <div class="contenedor__form-input">
+            <div class="contendor__input">
+                <label for="" class="label__title">Tipo de documento
+                    <span class="obligatorio">*</span>
+                </label>
+                <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Seleccione un tipo de documento"
+                    formControlName="tipoDocumentoId">
+                    <nz-option [nzDisabled]="true" [nzValue]="undefined"
+                        nzLabel="Seleccione un tipo de documento"></nz-option>
+                    <nz-option [nzLabel]="item.nombre" [nzValue]="item.id"
+                        *ngFor="let item of listTiposDocumentos"></nz-option>
+                </nz-select>
+            </div>
+            <div class="contendor__input">
+                <label for="numeroDocumento">Número de Documento:
+                    <span class="obligatorio">*</span>
+                </label>
+                <input type="number" class="input__form" id="numeroDocumento" formControlName="numeroDocumento">
+            </div>
+        </div>
+        <div class="contenedor__form-input">
+            <div class="contendor__input">
+                <label for="correo">Correo Electrónico:
+                    <span class="obligatorio">*</span>
+                </label>
+                <input type="email" class="input__form" id="correo" formControlName="correo">
+            </div>
+            <div class="contendor__input">
+                <label for="telefono">Teléfono:
+                    <span class="obligatorio">*</span>
+                </label>
+                <input type="text" class="input__form" id="telefono" formControlName="telefono">
+            </div>
+        </div>
+
+        <div class="contenedor__form-input">
+            <div class="contendor__input">
+                <label for="username">Nombre de Usuario:
+                    <span class="obligatorio">*</span>
+                </label>
+                <input type="text" class="input__form" id="username" formControlName="username">
+            </div>
+            <div class="contendor__input">
+                <label for="password">Contraseña:
+                    <span class="obligatorio">*</span>
+                </label>
+                <input ttype="password" class="input__form" id="password" formControlName="password">
+            </div>
+        </div>
+
+        <div class="contenedor__form-input">
+            <div class="contendor__input">
+                <label for="tipoGeneroId">Tipo de Género:
+                    <span class="obligatorio">*</span>
+                </label>
+                <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Seleccione un genero"
+                    formControlName="tipoGeneroId">
+                    <nz-option [nzDisabled]="true" [nzValue]="undefined" nzLabel="Seleccione un genero"></nz-option>
+                    <nz-option [nzLabel]="item.nombre" [nzValue]="item.id" *ngFor="let item of listGenero"></nz-option>
+                </nz-select>
+            </div>
+            <div class="contendor__input">
+                <label for="direccion">Dirección:
+                    <span class="obligatorio">*</span>
+                </label>
+                <input type="text" class="input__form" id="direccion" formControlName="direccion">
+            </div>
+            <div class="contendor__input">
+                <label for="fechaNacimiento">Fecha de Nacimiento:
+                    <span class="obligatorio">*</span>
+                </label>
+                <nz-date-picker formControlName="fechaNacimiento"></nz-date-picker>
+            </div>
+        </div>
+
+        <!-- Botón para enviar el formulario -->
+        <div class="contenedor__btn">
+            <button class="btn__green" type="submit">
+                Guardar
+            </button>
+        </div>
+    </form>
+
+</section>

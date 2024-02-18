@@ -59,7 +59,9 @@ export class CompraService {
     let compraActual: IVentas[] = this.compraSubject.getValue();
 
     compraActual = compraActual.filter((value) => value.id != producto);
-
+    if (producto < 0) {
+      compraActual.length = 0;
+    }
     this.compraSubject.next(compraActual);
   }
 }

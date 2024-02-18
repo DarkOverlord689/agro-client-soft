@@ -6,7 +6,7 @@
             <div class="contenedor__title">
 
                 <!-- Title with a greeting and dynamic name using AngularJS expression -->
-                <h2> Hola, {{ (nombreCompleto) || '' }} ¡Bienvenido! </h2>
+                <h2> Hola, {{ (auth.primerNombre + ' ' + auth.primerApellido) || '' }} ¡Bienvenido! </h2>
 
                 <!-- Display the number of pending notifications -->
                 <span>Tienes <span>{{ cantidadNotificaciones }}</span> notificaciones pendientes.</span>

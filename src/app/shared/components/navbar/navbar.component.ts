@@ -1,3 +1,4 @@
+import { UtilsService } from './../../utils/utils.service';
 import { NavbarService } from './../../services/navbar.service';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
@@ -10,16 +11,21 @@ import { Subscription } from 'rxjs';
 export class NavbarComponent implements OnInit, OnDestroy {
   title: string = 'Dashboard';
 
-  nombre: string = 'Luis Valencia';
-  perfil: string = 'Local';
+  auth: any = JSON.parse(this._utilsService.getLocalStorages('auth')!);
+
+  nombre: string = '';
   foto: string = '../../../../assets/imgs/profile.png';
 
   subscription: Subscription;
 
-  constructor(private _navbarService: NavbarService) {
+  constructor(
+    private _navbarService: NavbarService,
+    private _utilsService: UtilsService
+  ) {
     this.subscription = new Subscription();
   }
   ngOnInit(): void {
+    this.nombre = this.auth.primerNombre + ' ' + this.auth.primerApellido;
     this.subscription = this._navbarService.title$.subscribe((newTitle) => {
       this.title = newTitle;
     });
@@ -30,5 +36,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     }
   }
 
-  logout() {}
+  logout() {
+    this._utilsService.logout();
+  }
 }

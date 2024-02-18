@@ -14,6 +14,7 @@ export class GestionProductosComponent implements OnInit {
   isVisibleProductList: boolean = false;
 
   listInventario: any[] = [];
+  listInventarioVentas: any[] = [];
 
   /** Opciones de tamaño de página para el paginador. */
   pageSizeOptions: number[] = [10, 50, 100];
@@ -48,6 +49,17 @@ export class GestionProductosComponent implements OnInit {
       this.listInventario = this.listInventario.sort(
         (a: any, b: any) => b.estado - a.estado
       );
+    })
+    .catch((reason) => {
+      console.log(reason);
+    });
+  }
+
+
+  async listVentasByProducto(producto: number) {
+    await this._httpImplService.obtener(`inventario/list-detalle-venta?producto=${producto}`)
+    .then((value: any) => {
+      this.listInventarioVentas = value;
     })
     .catch((reason) => {
       console.log(reason);

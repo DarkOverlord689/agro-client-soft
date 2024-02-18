@@ -37,6 +37,8 @@ export class DashboardComponent implements OnInit, OnChanges {
   /** Fecha actual. */
   fechaActual: Date = new Date();
 
+  auth: any = JSON.parse(this._utilsService.getLocalStorages('auth')!);
+
   /** Mapeo de nombres de meses. */
   jsonMes: any = {
     0: 'Enero',
@@ -203,7 +205,7 @@ export class DashboardComponent implements OnInit, OnChanges {
   async getNotas() {
     this._httpService.apiUrl = environment.url;
     await this._httpImplService
-      .obtener('notas/list?user=1')
+      .obtener(`notas/list?user=${this.auth.id}`)
       .then((value: any) => {
         this.notas = value;
         this.notas = this.notas
@@ -225,7 +227,7 @@ export class DashboardComponent implements OnInit, OnChanges {
     this._httpService.apiUrl = environment.url;
     await this._httpImplService
       .guardar('notas/created-notas', {
-        fkUser: 1,
+        fkUser: this.auth.id,
         descripcion: this.formNotas.get('nota')?.value,
         estado: 0,
         orden: 1,

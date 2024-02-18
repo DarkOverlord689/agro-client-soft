@@ -9,15 +9,7 @@ import { ITag } from 'src/app/shared/models/tag.interface';
       (emitTag)="recibirEmit($event)"
     ></app-sub-navbar>
     <section>
-      <ng-container [ngSwitch]="codigoTagActive">
-        <div *ngSwitchCase="'DAS_MOV'">
-          <app-dashboard-movimientos></app-dashboard-movimientos>
-        </div>
-        <div *ngSwitchCase="'GES_MOV'">
-          <app-gestion-movimientos></app-gestion-movimientos>
-        </div>
-        <div *ngSwitchDefault></div>
-      </ng-container>
+      <app-gestion-movimientos></app-gestion-movimientos>
     </section>
   `,
   styles: [],
@@ -27,20 +19,14 @@ export class MovimientosComponent {
   codigoTagActive: string;
 
   constructor() {
-    this.codigoTagActive = 'DAS_MOV';
+    this.codigoTagActive = 'GES_MOV';
     this.tag = [
       {
         id: 1,
-        codigo: 'DAS_MOV',
-        nombreTag: 'Dashboard de movimientos',
-        iconTag: '../../../../assets/icons/tags/suspensivo.svg',
-      },
-      {
-        id: 2,
         codigo: 'GES_MOV',
         nombreTag: 'Gestión de movimientos',
         iconTag: '../../../../assets/icons/tags/suspensivo.svg',
-      }
+      },
     ];
   }
 

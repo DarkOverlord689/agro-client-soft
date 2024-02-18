@@ -11,7 +11,7 @@ import { environment } from 'src/environment/environment';
   templateUrl: './agregar-inventario.component.html',
   styleUrls: ['./agregar-inventario.component.scss'],
 })
-export class AgregarInventarioComponent implements OnInit{
+export class AgregarInventarioComponent implements OnInit {
   formInventario: FormGroup;
 
   listProveedor: any[] = [];
@@ -47,13 +47,16 @@ export class AgregarInventarioComponent implements OnInit{
     this.getProveedor();
     this.getCategorias();
   }
-  
+
   // HTTP
   async getProveedor() {
     await this._httpImplService
       .obtener('proveedores/list')
       .then((value: any) => {
         this.listProveedor = value;
+        this.listProveedor = this.listProveedor.filter(
+          (value: any) => value.estado == 1
+        );
       })
       .catch((reason) => {
         console.log(reason);
@@ -62,31 +65,38 @@ export class AgregarInventarioComponent implements OnInit{
 
   async getCategorias() {
     await this._httpImplService
-    .obtener('configuracion/list-categorias?codigo=PRO')
-    .then((value: any) => {
-      this.listCategoria = value;
-    })
-    .catch((reason) => {
-      console.log(reason);
-    });
+      .obtener('configuracion/list-categorias?codigo=PRO')
+      .then((value: any) => {
+        this.listCategoria = value;
+        this.listCategoria = this.listCategoria.filter(
+          (value: any) => value.estado == 1
+        );
+      })
+      .catch((reason) => {
+        console.log(reason);
+      });
   }
 
   async postInventario() {
-    if(this.formInventario.invalid) return;
+    if (this.formInventario.invalid) return;
     await this._httpImplService
       .guardar('inventario/created-inventario', {
         nombre: this.formInventario.value.nombre,
         fkCategoria: this.formInventario.value.fkCategoria,
         fkProveedor: this.formInventario.value.fkProveedor,
-        fechaInicialVen: this._utilService.formatDate(this.formInventario.value.rango[0]),
-        fechaFinalVen: this._utilService.formatDate(this.formInventario.value.rango[1]),
+        fechaInicialVen: this._utilService.formatDate(
+          this.formInventario.value.rango[0]
+        ),
+        fechaFinalVen: this._utilService.formatDate(
+          this.formInventario.value.rango[1]
+        ),
         costoProveedor: this.formInventario.value.costoProveedor,
         cantidadProveedor: this.formInventario.value.cantidadProveedor,
         valorVenta: this.formInventario.value.valorVenta,
         descripcion: this.formInventario.value.descripcion,
         estado: 1,
         foto: this.formInventario.value.foto,
-        codigoQR: this.formInventario.value.codigoQR
+        codigoQR: this.formInventario.value.codigoQR,
       })
       .then((value: any) => {
         this.message.success('Inventario agregado correctamente');

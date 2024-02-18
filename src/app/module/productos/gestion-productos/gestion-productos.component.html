@@ -23,7 +23,7 @@
                         <td class="item-action">
                             <nz-switch nzSize="small" [(ngModel)]="item.estado"
                             (ngModelChange)="changeEstadoInventario(item.id,item.estado)"></nz-switch>
-                            <svg (click)="isVisibleProductList = !isVisibleProductList" nz-tooltip
+                            <svg (click)="isVisibleProductList = !isVisibleProductList; listVentasByProducto(item.id)" nz-tooltip
                                 nzTooltipTitle="Ver trazabilidad del producto" xmlns="http://www.w3.org/2000/svg"
                                 width="24" height="24" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
                                 <path
@@ -69,5 +69,5 @@
 </section>
 
 <div class="modal-list" *ngIf="isVisibleProductList">
-    <app-modal-productos-detail (abrirModalAgregar)="recibirModalAgregar($event)"></app-modal-productos-detail>
+    <app-modal-productos-detail [detalleVenta]="listInventarioVentas" (abrirModalAgregar)="recibirModalAgregar($event)"></app-modal-productos-detail>
 </div>

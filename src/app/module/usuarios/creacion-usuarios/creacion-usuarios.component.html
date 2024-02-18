@@ -24,7 +24,10 @@
         <form>
             <div class="contenedor__form-input">
                 <div class="contendor__input">
-                    <label for="" class="label__title">Primer nombre</label>
+                    <label for="" class="label__title">
+                        Primer nombre
+                        <span class="obligatorio">*</span>
+                    </label>
                     <input type="text" class="input__form" placeholder="Ingrese su primer nombre">
                 </div>
                 <div class="contendor__input">
@@ -34,7 +37,10 @@
             </div>
             <div class="contenedor__form-input">
                 <div class="contendor__input">
-                    <label for="" class="label__title">Primer apellido</label>
+                    <label for="" class="label__title">
+                        Primer apellido
+                        <span class="obligatorio">*</span>
+                    </label>
                     <input type="text" class="input__form" placeholder="Ingrese su primer apellido">
                 </div>
                 <div class="contendor__input">
@@ -44,39 +50,56 @@
             </div>
             <div class="contenedor__form-input">
                 <div class="contendor__input">
-                    <label for="" class="label__title">Tipo de documento</label>
-                    <nz-select nzShowSearch nzAllowClear nzMode="multiple" nzPlaceHolder="Seleccione un tipo de documento"
-                        [nzMaxTagCount]="1" formControlName="entity">
+                    <label for="" class="label__title">
+                        Tipo de documento
+                        <span class="obligatorio">*</span>
+                    </label>
+                    <nz-select nzShowSearch nzAllowClear nzMode="multiple"
+                        nzPlaceHolder="Seleccione un tipo de documento" [nzMaxTagCount]="1" formControlName="entity">
                         <nz-option [nzDisabled]="true" [nzValue]="undefined"
                             nzLabel="Seleccione un tipo de documento"></nz-option>
                     </nz-select>
                 </div>
                 <div class="contendor__input">
-                    <label for="" class="label__title">Número de documento</label>
+                    <label for="" class="label__title">
+                        Número de documento
+                        <span class="obligatorio">*</span>
+                    </label>
                     <input type="number" class="input__form" placeholder="Ingrese un número de documento">
                 </div>
             </div>
             <div class="contenedor__form-input">
                 <div class="contendor__input">
-                    <label for="" class="label__title">Correo</label>
+                    <label for="" class="label__title">
+                        Correo
+                        <span class="obligatorio">*</span>
+                    </label>
                     <input type="email" class="input__form" placeholder="example@gmail.com">
                 </div>
                 <div class="contendor__input">
-                    <label for="" class="label__title">Genero</label>
+                    <label for="" class="label__title">
+                        Genero
+                        <span class="obligatorio">*</span>
+                    </label>
                     <nz-select nzShowSearch nzAllowClear nzMode="multiple" nzPlaceHolder="Seleccione un genero"
                         [nzMaxTagCount]="1">
-                        <nz-option [nzDisabled]="true" [nzValue]="undefined"
-                            nzLabel="Seleccione un genero"></nz-option>
+                        <nz-option [nzDisabled]="true" [nzValue]="undefined" nzLabel="Seleccione un genero"></nz-option>
                     </nz-select>
                 </div>
             </div>
             <div class="contenedor__form-input">
                 <div class="contendor__input">
-                    <label for="" class="label__title">Dirección</label>
+                    <label for="" class="label__title">
+                        Dirección
+                        <span class="obligatorio">*</span>
+                    </label>
                     <input type="text" class="input__form" placeholder="Ingrese una dirección">
                 </div>
                 <div class="contendor__input">
-                    <label for="" class="label__title">Fecha de nacimiento</label>
+                    <label for="" class="label__title">
+                        Fecha de nacimiento
+                        <span class="obligatorio">*</span>
+                    </label>
                     <nz-date-picker></nz-date-picker>
                 </div>
             </div>

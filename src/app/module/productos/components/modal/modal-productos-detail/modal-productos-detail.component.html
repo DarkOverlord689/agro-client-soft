@@ -8,7 +8,7 @@
     </button>
 
     <h2 class="title">
-        {{ tagActivo == 1 ? 'Detalle del producto' : tagActivo == 2 ? 'Compras del producto' : tagActivo == 3 ? 'Ventas del producto' : 'Historial del producto' }}
+        Ventas del producto
     </h2>
 
     <nav>
@@ -23,18 +23,32 @@
         </ul>
     </nav>
 
-    <ng-container [ngSwitch]="tagActivo">
-        <div *ngSwitchCase="1">
-            Lorem.
-        </div>
-        <div *ngSwitchCase="2">
-            Lorem, ipsum.
-        </div>
-        <div *ngSwitchCase="3">
-            Lorem, ipsum dolor.
-        </div>
-        <div *ngSwitchCase="4">
-            Lorem ipsum dolor sit.
-        </div>
-    </ng-container>
+    <div class="contenedor__table" [ngStyle]="{'min-height': detalleVenta.length > 0 ? '100px' : '300px'}">
+        <table>
+            <thead>
+                <tr>
+                    <th>Fecha venta</th>
+                    <th>Producto</th>
+                    <th>Venta</th>
+                    <th>Cantidad</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of detalleVenta">
+                    <td>{{ (item.createdAt || "-")}}</td>
+                    <td>{{ item.fkProducto }}</td>
+                    <td>{{ item.fkVenta }}</td>
+                    <td>{{ item.cantidad }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="paginador">
+        <span>Usuarios activos: <span>{{ pageSize > detalleVenta.length ? detalleVenta.length :
+                pageSize}}</span>/{{detalleVenta.length}}</span>
+        <mat-paginator [length]="detalleVenta.length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions">
+            <!-- (page)="getListUser()" -->
+        </mat-paginator>
+    </div>
 </section>

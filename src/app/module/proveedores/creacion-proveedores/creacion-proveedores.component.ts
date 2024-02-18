@@ -50,6 +50,7 @@ export class CreacionProveedoresComponent implements OnInit{
       .obtener('configuracion/list-bancos')
       .then((value: any) => {
         this.listBancos = value;
+        this.listBancos = this.listBancos.filter((value: any) => value.estado == 1);
       })
       .catch((reason) => {
         console.log(reason);
@@ -60,7 +61,8 @@ export class CreacionProveedoresComponent implements OnInit{
     await this._httpImplService
     .obtener('configuracion/list-categorias?codigo=PRO')
     .then((value: any) => {
-      this.listBancos = value;
+      this.listCategoria = value;
+      this.listCategoria = this.listCategoria.filter((value: any) => value.estado == 1);
     })
     .catch((reason) => {
       console.log(reason);

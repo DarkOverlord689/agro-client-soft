@@ -1,7 +1,9 @@
+import { MainRedirectGuard } from './guards/main-redirect.guard';
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, CanActivate } from '@angular/router';
 import { MainComponent } from './module/main/main.component';
 import { LoginComponent } from './module/auth/login/login.component';
+import { RedirectGuard } from './guards/redirect.guard';
 
 const routes: Routes = [
   {
@@ -9,12 +11,14 @@ const routes: Routes = [
     component: LoginComponent,
     loadChildren: () =>
       import('./module/auth/auth.module').then((m) => m.AuthModule),
+    canActivate: [MainRedirectGuard],
   },
   {
     path: 'main',
     component: MainComponent,
     loadChildren: () =>
       import('./module/main/main.module').then((m) => m.MainModule),
+    canActivate: [RedirectGuard],
   },
   {
     path: '',

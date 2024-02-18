@@ -3,30 +3,30 @@
       <!-- <a href="#" title="Logo">
           <img src="assets/ofin.png" class='logo' alt="Ofin">
       </a> -->
-      <form class="my-form">
+      <form class="my-form" [formGroup]="formLogin" (ngSubmit)="postLogin()">
           <div class="form-welcome-row">
               <h1>Create your account 🖐🏼</h1>
           </div>
-          <div class="socials-row">
+          <!-- <div class="socials-row">
               <a href="#" title="Use Google">
                   <img src="../../../../assets/imgs/google.png" alt="Google">Use Google
               </a>
               <a href="#" title="Use Apple">
                   <img src="../../../../assets/imgs/apple.png" alt="Apple"> Use Apple
               </a>
-          </div>
-          <div class="divider">
+          </div> -->
+          <!-- <div class="divider">
               <div class="divider-line"></div> Or <div class="divider-line"></div>
-          </div>
+          </div> -->
           <div class="text-field">
-              <label for="email">Email:
+              <label for="email">Usuario:
                   <input
-                      type="email"
+                      type="text"
                       id="email"
                       name="email"
                       autocomplete="off"
                       placeholder="Your Email"
-                      required
+                      formControlName="username"
                   >
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" 
                       viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" 
@@ -48,7 +48,7 @@
                       title="Minimum 6 characters at 
                           least 1 Alphabet and 1 Number"
                       pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$"
-                      required
+                      formControlName="password"
                   >
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" 
                       viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" 
@@ -63,14 +63,14 @@
           <button type="submit" class="my-form__button">
               Login
           </button>
-          <div class="my-form__actions">
+          <!-- <div class="my-form__actions">
               <a href="#" title="Reset Password">
                   Reset Password
               </a>
               <a href="#" title="Create Account">
                   Already have an account?
               </a>
-          </div>
+          </div> -->
       </form>
   </div>
   <div class="info-side">

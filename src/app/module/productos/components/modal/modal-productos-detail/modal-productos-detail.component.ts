@@ -1,41 +1,33 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ITag } from 'src/app/shared/models/tag.interface';
 
 @Component({
   selector: 'app-modal-productos-detail',
   templateUrl: './modal-productos-detail.component.html',
-  styleUrls: ['./modal-productos-detail.component.scss']
+  styleUrls: ['./modal-productos-detail.component.scss'],
 })
 export class ModalProductosDetailComponent {
   @Output() abrirModalAgregar: EventEmitter<boolean> = new EventEmitter(false);
+
+  @Input() detalleVenta: any[] = [];
+
+    /** Opciones de tamaño de página para el paginador. */
+    pageSizeOptions: number[] = [5, 10, 50];
+    /** Tamaño de página actual. */
+    pageSize: number = 5;
+    /** Número total de elementos. */
+    totalItems: number = 0;
 
   tagActivo: number = 1;
   tag: ITag[] = [
     {
       id: 1,
-      codigo: 'DET',
-      nombreTag: 'Detalle',
-      iconTag: '../../../../../../assets/icons/tags/suspensivo.svg',
-    },
-    {
-      id: 2,
-      codigo: 'COM',
-      nombreTag: 'Compras',
-      iconTag: '../../../../../../assets/icons/tags/suspensivo.svg',
-    },
-    {
-      id: 3,
       codigo: 'VEN',
       nombreTag: 'Ventas',
       iconTag: '../../../../../../assets/icons/tags/suspensivo.svg',
     },
-    {
-      id: 4,
-      codigo: 'HIS',
-      nombreTag: 'Historial',
-      iconTag: '../../../../../../assets/icons/tags/suspensivo.svg',
-    },
   ];
+
   selectActive: boolean = false;
 
   // EVENTS
