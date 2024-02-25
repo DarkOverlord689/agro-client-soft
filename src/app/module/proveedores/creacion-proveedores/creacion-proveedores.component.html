@@ -1,6 +1,6 @@
 <section class="contenedor">
     <div class="contenedor__btn-agregar">
-        <button class="btn__agregar">
+        <button class="btn__agregar" type="submit" (click)="postProveedores()">
             Agregar
             <div class="contenedor__svg">
                 <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 23 23" fill="none">
@@ -18,39 +18,40 @@
             </div>
         </button>
     </div>
-    
+
     <h2 class="title">
         Nueva proveedor
     </h2>
 
-    <form>
+    <form [formGroup]="formsProveedores">
         <h2 class="sub-title">Contacto de la empresa</h2>
         <div class="contenedor__form-input">
             <div class="contendor__input">
                 <label for="" class="label__title">Nombre de la empresa</label>
-                <input type="text" class="input__form">
+                <input type="text" class="input__form" formControlName="nombre">
             </div>
+            <!-- REVISAR ESTE CAMPO -->
             <div class="contendor__input">
-                <label for="" class="label__title">Dirección de la empresa</label>
-                <input type="text" class="input__form">
+                <label for="" class="label__title">Descripciòn de la empresa</label>
+                <input type="text" class="input__form" formControlName="descripcion">
             </div>
             <div class="contendor__input">
                 <label for="" class="label__title">Teléfono</label>
-                <input type="number" class="input__form">
+                <input type="number" class="input__form" formControlName="telefono">
             </div>
         </div>
         <div class="contenedor__form-input">
             <div class="contendor__input">
                 <label for="" class="label__title">Telefono 2</label>
-                <input type="number" class="input__form">
+                <input type="number" class="input__form" formControlName="segundoTelefono">
             </div>
             <div class="contendor__input">
                 <label for="" class="label__title">Correo electronico</label>
-                <input type="text" class="input__form">
+                <input type="text" class="input__form" formControlName="correo">
             </div>
             <div class="contendor__input">
                 <label for="" class="label__title">Sitio web</label>
-                <input type="text" class="input__form">
+                <input type="text" class="input__form" formControlName="sitioWeb">
             </div>
         </div>
 
@@ -58,32 +59,34 @@
         <div class="contenedor__form-input">
             <div class="contendor__input">
                 <label for="" class="label__title">Nombre del banco</label>
-                <input type="text" class="input__form">
+                <nz-select nzShowSearch nzAllowClear formControlName="fkBanco">
+                  <nz-option [nzDisabled]="true" [nzValue]="undefined" nzLabel="Seleccione un banco"></nz-option>
+              </nz-select>
             </div>
             <div class="contendor__input">
                 <label for="" class="label__title">Nombre del beneficiario</label>
-                <input type="text" class="input__form">
+                <input type="text" class="input__form" formControlName="nombreBeneficiario">
             </div>
             <div class="contendor__input">
                 <label for="" class="label__title">Numero de cuenta</label>
-                <input type="text" class="input__form">
+                <input type="text" class="input__form" formControlName="numeroCuenta">
             </div>
         </div>
         <h2 class="sub-title">Información general</h2>
         <div class="contenedor__form-input">
             <div class="contendor__input">
                 <label for="" class="label__title">Fecha de creación de la empresa</label>
-                <nz-date-picker></nz-date-picker>
+                <nz-date-picker formControlName="fechaCreacionEmpresa"></nz-date-picker>
             </div>
             <div class="contendor__input">
                 <label for="" class="label__title">Categoria de la empresa</label>
-                <nz-select nzShowSearch nzAllowClear>
+                <nz-select nzShowSearch nzAllowClear formControlName="fkCategoria">
                     <nz-option [nzDisabled]="true" [nzValue]="undefined" nzLabel="Seleccione un tipo"></nz-option>
                 </nz-select>
             </div>
             <div class="contendor__input">
                 <label for="" class="label__title">Bruto anual en ventas</label>
-                <input type="number" class="input__form">
+                <input type="number" class="input__form" formControlName="brutoAnual">
             </div>
         </div>
     </form>

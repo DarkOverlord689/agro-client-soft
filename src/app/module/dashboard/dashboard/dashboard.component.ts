@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { HttpService } from 'src/app/shared/services/http.service';
 import { HttpImplService } from 'src/app/shared/services/impl/http-impl.service';
 import { UtilsService } from 'src/app/shared/utils/utils.service';
+import { environment } from 'src/environment/environment';
 
 @Component({
   selector: 'app-dashboard',
@@ -14,6 +15,8 @@ export class DashboardComponent {
   clima: any;
   /** Entidad seleccionada para la consulta climática. */
   entidadSeleccionada: string = '';
+  /** listado de fechas especiales */
+  listFechasEspeciales: any[] = [];
 
   /** Niveles de humedad y viento. */
   humedad: number = 0;
@@ -77,7 +80,7 @@ export class DashboardComponent {
     private _httpImplService: HttpImplService,
     public _utilsService: UtilsService,
     public router: Router
-  ) {}
+  ) { }
 
   /**
    * Inicialización del componente.
@@ -142,5 +145,16 @@ export class DashboardComponent {
       .catch((reason: any) => {
         console.log(reason);
       });
+  }
+
+
+  async getFechasEspeciales() {
+    this._httpService.apiUrl = environment.url;
+    await this._httpImplService.obtener("list")
+      .then((value: any) => {
+        this.listFechasEspeciales = value;
+      }).catch((reason) => {
+        console.log(reason);
+      })
   }
 }

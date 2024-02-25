@@ -1,32 +1,31 @@
-
 <ng-container *ngIf="listInventario.length > 0; then dataMain; else noDataMain"></ng-container>
 <ng-template #dataMain>
-    <div class="contenedor__table" [ngStyle]="{'min-height': listInventario.length > 0 ? '100px' : '300px'}">
-        <table>
-            <thead>
-                <tr>
-                    <th></th>
-                    <th>Código</th>
-                    <th>Nombre del producto</th>
-                    <th>Categoria</th>
-                    <th>Proveedor</th>
-                    <th>Cantidad disponible</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>
-                        <label nz-checkbox></label>
-                    </td>
-                    <td>PAN-01</td>
-                    <td>Pan</td>
-                    <td>Arina</td>
-                    <td>Coltex</td>
-                    <td>23</td>
-                    <td class="item-action">
-                        <nz-switch nzSize="small"></nz-switch>
-                        <!-- <div class="aumentar" nz-tooltip nzTooltipTitle="Aumentar la cantidad de stock">
+  <div class="contenedor__table" [ngStyle]="{'min-height': listInventario.length > 0 ? '100px' : '300px'}">
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th>Código</th>
+          <th>Nombre del producto</th>
+          <th>Categoria</th>
+          <th>Proveedor</th>
+          <th>Cantidad disponible</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <label nz-checkbox [(ngModel)]="estadoFila" (change)="emittirInventarioSeleccionadoMet(1)"></label>
+          </td>
+          <td>PAN-01</td>
+          <td>Pan</td>
+          <td>Arina</td>
+          <td>Coltex</td>
+          <td>23</td>
+          <td class="item-action">
+            <nz-switch nzSize="small" (click)="changeEstadoProveedor(1,1)"></nz-switch>
+            <!-- <div class="aumentar" nz-tooltip nzTooltipTitle="Aumentar la cantidad de stock">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                 class="bi bi-plus" viewBox="0 0 16 16">
                                 <path
@@ -39,23 +38,23 @@
                                 <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8" />
                             </svg>
                         </div> -->
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
-    <div class="paginador">
-        <span>Usuarios activos: <span>{{ pageSize > listInventario.length ? listInventario.length :
-                pageSize}}</span>/{{listInventario.length}}</span>
-        <mat-paginator [length]="listInventario.length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions">
-            <!-- (page)="getListUser()" -->
-        </mat-paginator>
-    </div>
+  <div class="paginador">
+    <span>Usuarios activos: <span>{{ pageSize > listInventario.length ? listInventario.length :
+        pageSize}}</span>/{{listInventario.length}}</span>
+    <mat-paginator [length]="listInventario.length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions">
+      <!-- (page)="getListUser()" -->
+    </mat-paginator>
+  </div>
 </ng-template>
 
 <ng-template #noDataMain>
-    <div class="no__hay-datos">
-        <img src="../../../../assets/icons/table/vacio.svg" alt="">
-    </div>
+  <div class="no__hay-datos">
+    <img src="../../../../assets/icons/table/vacio.svg" alt="">
+  </div>
 </ng-template>
