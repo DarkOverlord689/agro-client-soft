@@ -1,1 +1,278 @@
-<p>dashboard works!</p>
+<section>
+    <div class="card-1">
+        <!-- Section with class "section-1" -->
+        <section class="section-1">
+            <!-- Container for title and notifications -->
+            <div class="contenedor__title">
+
+                <!-- Title with a greeting and dynamic name using AngularJS expression -->
+                <h2> Hola, {{ (nombreCompleto) || '' }} ¡Bienvenido! </h2>
+
+                <!-- Display the number of pending notifications -->
+                <span>Tienes <span>{{ cantidadNotificaciones }}</span> notificaciones pendientes.</span>
+            </div>
+
+            <!-- Container for options -->
+            <div class="contenedor__opciones">
+
+                <!-- Left options container -->
+                <div class="opciones__izq">
+
+                    <!-- Button to view notifications -->
+                    <button>
+                        Ver notificaciones
+
+                        <!-- Dropdown indicator -->
+                        <div class="select__desplegar" (click)="router.navigateByUrl('/main/tareas')">
+                            >
+                        </div>
+                    </button>
+                </div>
+
+                <!-- Display the date -->
+                <span>{{ fechaFormateada }}</span>
+            </div>
+        </section>
+
+        <!-- Section with class "section-2" -->
+        <section class="section-2">
+
+            <!-- Heading for special dates -->
+            <h2>Fechas Especiales</h2>
+
+            <!-- Container for special dates -->
+            <div class="contendor__fechas-especiales">
+
+                <!-- Loop through a set of items using AngularJS ngFor directive -->
+                <div class="fechas__especiales-cont" *ngFor="let item of [1, 2, 3, 4]">
+
+                    <!-- Container for each special date -->
+                    <div>
+
+                        <!-- Image for the special date -->
+                        <img src="../../../../assets/icons/dashboards/regalo.svg" alt="">
+                    </div>
+
+                    <!-- Paragraph for the special date with highlighted text -->
+                    <span class="fechas__especiales-parrafo">
+                        <span class="resaltar">6 de enero.</span> Cumpleaños de Esther Howard
+                    </span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section with class "section-3" -->
+        <section class="section-3">
+
+            <!-- Heading for personal notes -->
+            <h2>Mis notas</h2>
+
+            <!-- Container for adding a new note -->
+            <div class="contenedor__agregar-nota">
+
+                <!-- Input field for entering a new note -->
+                <input type="text" placeholder="Escribe aqui...">
+
+                <!-- Button to add the new note -->
+                <button>Agregar</button>
+            </div>
+
+            <!-- Container for displaying existing notes -->
+            <div class="contendor__notas-especiales">
+
+                <!-- Loop through a set of items using AngularJS ngFor directive -->
+                <div class="contendor__notas-cont" *ngFor="let item of [1, 2, 3, 4, 69, 85, 8, 6, 47]">
+
+                    <!-- Image for marking the note as completed -->
+                    <img src="../../../../assets/icons/dashboards/check.svg" alt="">
+
+                    <!-- Image for deleting the note -->
+                    <img src="../../../../assets/icons/dashboards/delete.svg" alt="">
+
+                    <!-- Paragraph for the note content -->
+                    <span class="especiales__notas-parrafo">
+                        Excepteur sint occaecat cupidatat non proident
+                    </span>
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+    <div class="card-2">
+        <!-- Section with class "section__1" -->
+        <section class="section__1">
+
+            <!-- Heading with the month and year using AngularJS expressions -->
+            <h2 class="mes">{{ jsonMes[fechaActual.getMonth()] }} <span class="ano__actual">{{ fechaActual.getFullYear()
+                    }}</span></h2>
+
+            <!-- Container for the header with days of the week -->
+            <div class="cabecera__day">
+
+                <!-- Unordered list for days of the week -->
+                <ul>
+
+                    <!-- List item for each day with conditional styling based on the day -->
+                    <li [ngStyle]="{'color': item == 'SAT' || item == 'SUN' ? '#448a26' : ''}" *ngFor="let item of day">
+                        {{ item }}
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Container for the body with days of the month -->
+            <div class="cuerpo__days">
+
+                <!-- Span for each day with conditional class based on the current date -->
+                <span class="days" [ngClass]="fechaActual.getDate() == item.day ? 'day__activo' : ''"
+                    *ngFor="let item of days">
+
+                    <!-- Display the day for each weekday using ngIf directives -->
+                    <div *ngIf="item.weekday == 'MON'">{{item.day}}</div>
+                    <div *ngIf="item.weekday == 'TUE'">{{item.day}}</div>
+                    <div *ngIf="item.weekday == 'WED'">{{item.day}}</div>
+                    <div *ngIf="item.weekday == 'THU'">{{item.day}}</div>
+                    <div *ngIf="item.weekday == 'FRI'">{{item.day}}</div>
+
+                    <!-- Display the day for Saturday and Sunday with custom color -->
+                    <div *ngIf="item.weekday == 'SAT'" style="color: #448a26;">{{item.day}}</div>
+                    <div *ngIf="item.weekday == 'SUN'" style="color: #448a26;">{{item.day}}</div>
+                </span>
+            </div>
+        </section>
+
+        <!-- Section with class "section__2" -->
+        <section class="section__2">
+
+            <!-- Header for location information -->
+            <header class="section__ubicacion">
+
+                <!-- Image for location -->
+                <img src="../../../../assets/icons/dashboards/ubicacion.svg" alt="">
+
+                <!-- Display location name and country using AngularJS expressions -->
+                <span>
+                    {{ (clima ? clima.location.name : '') + "/" + (clima ? clima.location.country : '') }}
+                </span>
+            </header>
+
+            <!-- Container for current temperature information -->
+            <div class="section__ubicacion-temp">
+
+                <!-- Display the current temperature with a degree symbol -->
+                <span class="temp__actual">{{ (currentTemp.toFixed(0)) || 0}}°</span>
+
+                <!-- Container for minimum and maximum temperature -->
+                <div class="temp">
+
+                    <!-- Display minimum temperature -->
+                    <span class="temp__min-max">{{ (currentMin.toFixed(0)) || 0 }}°</span>
+
+                    <!-- Display maximum temperature -->
+                    <span class="temp__min-max">{{ (currentMax.toFixed(0)) || 0}}°</span>
+                </div>
+            </div>
+
+            <!-- Image for temperature background -->
+            <img class="section__temp-fondo" src="../../../../assets/icons/dashboards/fondo.svg" alt="">
+
+            <!-- Container for additional location data -->
+            <div class="section__ubicacion-data">
+
+                <!-- Location data for wind -->
+                <div class="ubicacion__data">
+
+                    <!-- Image for wind -->
+                    <picture>
+                        <img src="../../../../assets/icons/dashboards/viento.svg" alt="">
+                    </picture>
+
+                    <!-- Information about wind -->
+                    <div class="ubicacion__data-info">
+                        <h2>Viento</h2>
+
+                        <!-- Display wind speed with unit -->
+                        <span>
+                            {{ viento.toFixed(0) || '-'}}
+                            <span>km/h</span>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Location data for humidity -->
+                <div class="ubicacion__data">
+
+                    <!-- Image for humidity -->
+                    <picture>
+                        <img src="../../../../assets/icons/dashboards/humedad.svg" alt="">
+                    </picture>
+
+                    <!-- Information about humidity -->
+                    <div class="ubicacion__data-info">
+                        <h2>Humedad</h2>
+
+                        <!-- Display humidity percentage -->
+                        <span>
+                            {{ humedad || '-' }}
+                            <span>%</span>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Location data for rainfall -->
+                <div class="ubicacion__data">
+
+                    <!-- Image for rainfall -->
+                    <picture>
+                        <img src="../../../../assets/icons/dashboards/lluvia.svg" alt="">
+                    </picture>
+
+                    <!-- Information about rainfall -->
+                    <div class="ubicacion__data-info">
+                        <h2>Lluvia</h2>
+
+                        <!-- Display rainfall percentage -->
+                        <span>
+                            10
+                            <span>%</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section with class "section__3" -->
+        <section class="section__3">
+
+            <!-- Container for weather information -->
+            <div class="contenedor__clima">
+
+                <!-- Loop through forecast data using AngularJS ngFor directive -->
+                <div class="clima__card" *ngFor="let item of clima.forecast.forecastday">
+
+                    <!-- Heading with the day of the week using a utility service method -->
+                    <h2>{{_utilsService.obtenerDiaSemana(item.date)}}</h2>
+
+                    <!-- Picture element for displaying weather condition icon -->
+                    <picture>
+                        <img [src]="item.day.condition.icon" alt="">
+                    </picture>
+
+                    <!-- Container for minimum and maximum temperature -->
+                    <div>
+
+                        <!-- Display minimum temperature with a degree symbol -->
+                        <span>{{ ((item.day.mintemp_c.toFixed(0)) + '°') || '0°'}}</span>
+
+                        <!-- Display maximum temperature with a degree symbol -->
+                        <span>{{ ((item.day.maxtemp_c.toFixed(0)) + '°') || '0°'}}</span>
+                    </div>
+                </div>
+
+                <!-- Placeholder for a map (commented out) -->
+                <!-- <div id="mapa"></div> -->
+            </div>
+        </section>
+
+    </div>
+</section>

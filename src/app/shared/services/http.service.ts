@@ -3,7 +3,11 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environment/environment';
 
-@Injectable()
+@Injectable(
+{
+  providedIn: 'root',
+}
+)
 export class HttpService {
   // Varible para almacenar la url endpoint
   private API_URL: string;

@@ -4,7 +4,11 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environment/environment';
 
-@Injectable()
+@Injectable(
+  {
+    providedIn: 'root',
+  }
+)
 export class HttpImplService {
   // Constructor
   constructor(private _http: HttpService, private httpClient: HttpClient) { }
