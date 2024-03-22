@@ -28,7 +28,7 @@ export class HttpService {
 
   // MANEJO DE PETICIONES
   /**
-   * @author  Luis valencia
+   * @author  Gabriel Piedra
    * @date 2023-10-15
    * @description metodo para obtener los resultados
    */
@@ -37,7 +37,7 @@ export class HttpService {
   }
 
   /**
-   * @author  Luis valencia
+   * @author  Gabriel Piedra
    * @date 2023-10-15
    * @description metodo para guardar los resultados
    */
@@ -46,7 +46,7 @@ export class HttpService {
   }
 
   /**
-   * @author  Luis valencia
+   * @author  Gabriel Piedra
    * @date 2023-10-15
    * @description metodo para modificar los resultados
    */
@@ -55,25 +55,11 @@ export class HttpService {
   }
 
   /**
-   * @author  Luis valencia
+   * @author  Gabriel Piedra
    * @date 2023-10-15
    * @description metodo eliminar los resultados
    */
   eliminar<T>(ruta: string): Observable<T> {
     return this.httpClient.delete<T>(`${this.apiUrl}${ruta}`);
-  }
-
-  generacionReports(body: any): Observable<Blob> {
-    const headers = new HttpHeaders()
-      .append('arn', 'A')
-      .append('arn', 'hola')
-      .append('region', 'A')
-      .append('region', 'A')
-      .append('typeDataSource', 'CONN')
-      .append('region', 'hola');
-    return this.httpClient.post<Blob>(`${environment.apiFilesReports}`, body, {
-      headers,
-      responseType: 'blob' as 'json',
-    });
   }
 }

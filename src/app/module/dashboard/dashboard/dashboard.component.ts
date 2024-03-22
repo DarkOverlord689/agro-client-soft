@@ -61,7 +61,7 @@ export class DashboardComponent implements OnInit, OnChanges {
   days: any[] = [];
 
   /** Nombre completo del usuario. */
-  nombreCompleto: string = 'Luis valencia';
+  nombreCompleto: string = 'Gabriel Piedra';
 
   /** Cantidad de notificaciones. */
   cantidadNotificaciones: number = 0;
@@ -172,10 +172,9 @@ export class DashboardComponent implements OnInit, OnChanges {
     // Realizar solicitud HTTP
     await this._httpImplService
       .obtener(
-        `?key=ab5b9967d7284f0aa91151814241501&q=${'BARR'}&days=5&aqi=no&alerts=no`
+        `?key=ab5b9967d7284f0aa91151814241501&q=${'TRUJ'}&days=5&aqi=no&alerts=no`
       )
       .then((value: any) => {
-        console.log('sasdsa' + value);
         // Actualizar propiedades con la respuesta de la solicitud
         this.clima = value;
         this.viento = value.current.wind_kph;

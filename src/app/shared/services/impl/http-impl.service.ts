@@ -14,7 +14,7 @@ export class HttpImplService {
   constructor(private _http: HttpService, private httpClient: HttpClient) { }
 
   /**
-  * @author  Luis valencia 
+  * @author  Gabriel Piedra 
   * @date 2023-10-15
   * @description metodo para manejar los resultados obtenidos
   */
@@ -32,7 +32,7 @@ export class HttpImplService {
   }
 
   /**
-  * @author  Luis valencia 
+  * @author  Gabriel Piedra 
   * @date 2023-10-15
   * @description metodo para manejar los resultados a guardar
   */
@@ -51,7 +51,7 @@ export class HttpImplService {
   }
 
   /**
-  * @author  Luis valencia 
+  * @author  Gabriel Piedra 
   * @date 2023-10-15
   * @description metodo para manejar los resultados a actualizar
   */
@@ -69,7 +69,7 @@ export class HttpImplService {
   }
 
   /**
-  * @author  Luis valencia 
+  * @author  Gabriel Piedra 
   * @date 2023-10-15
   * @description metodo para manejar los resultados a eliminar
   */

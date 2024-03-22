@@ -1,5 +1,4 @@
 export const environment = {
   production: true,
-  url:'https://updeveloment.online/api/',
-  apiFilesReports: 'http://localhost:9030/api/v1/jasper'
+  url:'http://54.152.160.217:8080/api/v1/'
 };

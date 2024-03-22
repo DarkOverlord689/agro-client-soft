@@ -4,9 +4,7 @@
 
 export const environment = {
   production: false,
-  url:'http://localhost:8080/api/v1/',
-  urlImg:'https://updeveloment.online/',
-  apiFilesReports: 'http://localhost:9030/api/v1/jasper'
+  url:'http://18.212.15.112:8080/api/v1/'
 };
 
 /*

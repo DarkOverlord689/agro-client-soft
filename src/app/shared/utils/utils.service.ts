@@ -15,7 +15,7 @@ export class UtilsService {
   constructor(private router: Router) {}
 
   /**
-   * @author  Luis valencia
+   * @author  Gabriel Piedra
    * @date 2023-10-15
    * @description  El método getLocalStorage(key: string) devuelve el valor de la key que esta en el localStorage
    */
@@ -24,7 +24,7 @@ export class UtilsService {
   }
 
   /**
-   * @author  Luis valencia
+   * @author  Gabriel Piedra
    * @date 2023-10-15
    * @description  El método setLocalStorage(key: string, elemento: any) guarda en el localStorage la key y el valor.
    */
@@ -33,7 +33,7 @@ export class UtilsService {
   }
 
   /**
-   * @author  Luis valencia
+   * @author  Gabriel Piedra
    * @date 2023-10-15
    * @description  El método clearToken(buscar: string) borra del localStorege la key que se pase.
    */
@@ -42,7 +42,7 @@ export class UtilsService {
   }
 
   /**
-   * @author  Luis valencia
+   * @author  Gabriel Piedra
    * @date 2023-10-15
    * @description  El método decodeToken(key: string) decodifica con la key
    */

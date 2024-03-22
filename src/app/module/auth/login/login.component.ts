@@ -38,10 +38,11 @@ export class LoginComponent implements OnInit {
   }
 
   postLogin() {
+    if (this.formLogin.invalid) return;
     this._httpImplService
       .guardar('auth/login', {
-        username: 'lvalenciadev',
-        password: '@Luis1821',
+        username: this.formLogin.value.username,
+        password: this.formLogin.value.password,
       })
       .then((value: any) => {
         this._utilsService.setLocalStorages('token', value.token);
