@@ -46,12 +46,12 @@ html {
   width: 6px;
   height: 7.5px;
   display: block;
-  background-color: #ffffff;
+  background-color: transparent;
 }
 
 ::-webkit-scrollbar-track {
   border-radius: 5px;
-  background-color: #ffffff;
+  background-color: transparent;
 }
 
 ::-webkit-scrollbar-thumb {

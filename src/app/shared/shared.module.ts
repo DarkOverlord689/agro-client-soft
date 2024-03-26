@@ -8,11 +8,14 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { SubNavbarComponent } from './components/sub-navbar/sub-navbar.component';
 
 import { ImportacionesGlobalModule } from '../importaciones-global.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const COMPONENTES = [SidebarComponent, NavbarComponent, SubNavbarComponent]
 
 const MODULOS = [
   CommonModule,
+  FormsModule,
+  ReactiveFormsModule,
   RouterModule,
   HttpClientModule,
   ImportacionesGlobalModule,
